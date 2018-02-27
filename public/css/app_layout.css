@@ -1,0 +1,345 @@
+body {
+  background-color: #eee;
+  font-family: 'Roboto', sans-serif;
+  padding-top: 10px; }
+
+.saving {
+  color: #aaa; }
+
+.tags {
+  background-color: #CD1717;
+  color: #fff;
+  padding: 3px;
+  font-size: 12px;
+  border-radius: 2px; }
+  .tags.yellow {
+    background-color: #F2D902;
+    color: #333; }
+
+.task-view {
+  background-color: #fefefe; }
+  .task-view .task-discussion {
+    border-top: 1px solid #eee;
+    margin-top: 15px; }
+    .task-view .task-discussion .title {
+      font-size: 20px;
+      padding-top: 5px;
+      font-weight: bold;
+      color: #333;
+      margin-top: 10px;
+      margin-bottom: 20px; }
+    .task-view .task-discussion .log-list .log {
+      margin-left: 80px;
+      font-size: 14px;
+      border: 1px solid 	#ddd;
+      border-radius: 2px;
+      margin-bottom: 10px;
+      padding: 5px 15px;
+      background-color: #F6F8FA; }
+      .task-view .task-discussion .log-list .log .name {
+        font-weight: bold; }
+      .task-view .task-discussion .log-list .log .action {
+        color: #aaa; }
+    .task-view .task-discussion .log-list .comment {
+      overflow: auto;
+      margin-bottom: 10px; }
+      .task-view .task-discussion .log-list .comment .comment-image {
+        width: 60px;
+        border-radius: 3px;
+        overflow: hidden;
+        float: left; }
+        .task-view .task-discussion .log-list .comment .comment-image img {
+          width: 100%; }
+      .task-view .task-discussion .log-list .comment .comment-content {
+        width: calc(100% - 80px);
+        float: right;
+        background-color: #fff;
+        border: 1px solid 	#c1c1c1;
+        border-radius: 2px;
+        box-sizing: border-box;
+        position: relative; }
+        .task-view .task-discussion .log-list .comment .comment-content .callout:before {
+          content: "";
+          position: absolute;
+          width: 0;
+          height: 0;
+          left: -22px;
+          top: 10px;
+          border: 10px solid transparent;
+          border-right: 12px solid #c1c1c1;
+          /* IE8 Fallback */
+          border-right: 12px solid rgba(193, 193, 193, 0.5);
+          z-index: 2; }
+        .task-view .task-discussion .log-list .comment .comment-content .callout:after {
+          content: "";
+          position: absolute;
+          width: 0;
+          height: 0;
+          left: -20px;
+          top: 10px;
+          border: 10px solid transparent;
+          border-right: 12px solid #F6F8FA;
+          /* IE8 Fallback */
+          z-index: 2; }
+        .task-view .task-discussion .log-list .comment .comment-content .comment-message {
+          font-size: 14px; }
+          .task-view .task-discussion .log-list .comment .comment-content .comment-message .comment-header {
+            padding: 15px;
+            background-color: #F6F8FA;
+            border-bottom: 1px solid #ddd; }
+            .task-view .task-discussion .log-list .comment .comment-content .comment-message .comment-header .name {
+              font-weight: bold; }
+            .task-view .task-discussion .log-list .comment .comment-content .comment-message .comment-header .action {
+              color: #aaa; }
+          .task-view .task-discussion .log-list .comment .comment-content .comment-message .comment-text {
+            padding: 15px;
+            white-space: pre-wrap; }
+    .task-view .task-discussion .comment-action {
+      margin-top: 15px;
+      overflow: auto; }
+      .task-view .task-discussion .comment-action .comment-image {
+        width: 60px;
+        border-radius: 3px;
+        overflow: hidden;
+        float: left; }
+        .task-view .task-discussion .comment-action .comment-image img {
+          width: 100%; }
+      .task-view .task-discussion .comment-action .comment-content {
+        width: calc(100% - 80px);
+        float: right;
+        background-color: #fff;
+        border: 1px solid 	#c1c1c1;
+        border-radius: 2px;
+        box-sizing: border-box;
+        position: relative;
+        min-height: 100px; }
+        .task-view .task-discussion .comment-action .comment-content .callout:before {
+          content: "";
+          position: absolute;
+          width: 0;
+          height: 0;
+          left: -22px;
+          top: 10px;
+          border: 10px solid transparent;
+          border-right: 12px solid #c1c1c1;
+          /* IE8 Fallback */
+          border-right: 12px solid rgba(193, 193, 193, 0.5);
+          z-index: 2; }
+        .task-view .task-discussion .comment-action .comment-content .callout:after {
+          content: "";
+          position: absolute;
+          width: 0;
+          height: 0;
+          left: -20px;
+          top: 10px;
+          border: 10px solid transparent;
+          border-right: 12px solid #F6F8FA;
+          /* IE8 Fallback */
+          z-index: 2; }
+        .task-view .task-discussion .comment-action .comment-content .tab-content {
+          background-color: #F6F8FA;
+          overflow: auto; }
+          .task-view .task-discussion .comment-action .comment-content .tab-content .nav-tabs {
+            margin-top: 10px;
+            padding-left: 10px; }
+            .task-view .task-discussion .comment-action .comment-content .tab-content .nav-tabs .nav-link {
+              color: #333;
+              font-size: 14px; }
+              .task-view .task-discussion .comment-action .comment-content .tab-content .nav-tabs .nav-link:hover {
+                border: 1px solid rgba(0, 0, 0, 0); }
+              .task-view .task-discussion .comment-action .comment-content .tab-content .nav-tabs .nav-link.active:hover {
+                border-color: #dee2e6 #dee2e6 #fff; }
+        .task-view .task-discussion .comment-action .comment-content .tab-output .write-comment {
+          margin: 15px;
+          border: 1px solid #ddd;
+          padding: 5px;
+          border-radius: 3px;
+          background-color: #FAFBFC; }
+          .task-view .task-discussion .comment-action .comment-content .tab-output .write-comment textarea {
+            width: 100%;
+            border: none;
+            min-height: 70px;
+            resize: none;
+            background-color: transparent;
+            font-size: 14px; }
+            .task-view .task-discussion .comment-action .comment-content .tab-output .write-comment textarea:focus {
+              outline: none; }
+          .task-view .task-discussion .comment-action .comment-content .tab-output .write-comment .attach-file {
+            border-top: 1px dotted #ddd;
+            font-size: 12px;
+            color: #aaa;
+            cursor: pointer;
+            padding: 5px;
+            padding-bottom: 0; }
+        .task-view .task-discussion .comment-action .comment-content .comment-button {
+          text-align: right;
+          margin-right: 18px;
+          margin-bottom: 15px; }
+          .task-view .task-discussion .comment-action .comment-content .comment-button button {
+            cursor: pointer;
+            border: 2px solid 	#2B8FCE;
+            color: #2B8FCE;
+            background-color: #fff;
+            padding: 5px 15px;
+            border-radius: 3px;
+            font-size: 14px; }
+            .task-view .task-discussion .comment-action .comment-content .comment-button button.main {
+              background-color: #2B8FCE;
+              border: 2px solid 	#2B8FCE;
+              color: #fff; }
+  .task-view .task-detail-container {
+    min-height: 100px;
+    border-right: 1px solid #e9ecef;
+    padding-left: 10px; }
+    .task-view .task-detail-container .tags-container {
+      padding-bottom: 10px; }
+      .task-view .task-detail-container .tags-container .deadline {
+        font-size: 14px;
+        color: #aaa;
+        padding: 5px;
+        padding-left: 8px; }
+    .task-view .task-detail-container .no-detail {
+      padding: 80px 10px;
+      text-align: center;
+      color: gray; }
+    .task-view .task-detail-container .task-detail {
+      white-space: pre-wrap;
+      padding-right: 10px;
+      font-size: 14px; }
+  .task-view .task-action-container {
+    padding-right: 10px; }
+    .task-view .task-action-container .action {
+      padding-bottom: 5px; }
+      .task-view .task-action-container .action button {
+        cursor: pointer;
+        border: 2px solid 	#2B8FCE;
+        color: #2B8FCE;
+        background-color: #fff;
+        width: 100%;
+        padding: 5px;
+        border-radius: 3px;
+        font-size: 14px; }
+        .task-view .task-action-container .action button.main {
+          background-color: #2B8FCE;
+          border: 2px solid 	#2B8FCE;
+          color: #fff; }
+
+.modal-add-task .details {
+  resize: none;
+  height: 200px; }
+.modal-add-task input[type=text] {
+  padding: 8px;
+  line-height: 14px; }
+
+.timer-counter {
+  width: 300px;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  margin: auto;
+  text-align: center;
+  padding: 10px;
+  border-radius: 3px; }
+  .timer-counter .timer-countdown-label {
+    color: #333;
+    font-size: 14px; }
+  .timer-counter .timer-countdown {
+    font-size: 25px;
+    color: #006DB9;
+    font-weight: bold;
+    margin-top: -3px; }
+  .timer-counter .idle-countdown {
+    font-size: 14px;
+    color: gray;
+    margin-top: -8px; }
+  .timer-counter button.time-button {
+    margin-top: 10px;
+    border: 1px solid #eee;
+    color: #fff;
+    background-color: #006DB9;
+    padding: 10px;
+    font-weight: bold;
+    border-radius: 3px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px; }
+  .timer-counter button.logout-button {
+    margin-top: 10px;
+    border: 1px solid #eee;
+    color: #fff;
+    background-color: gray;
+    padding: 10px;
+    font-weight: bold;
+    border-radius: 3px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px; }
+
+.task-container {
+  width: 90%;
+  margin: auto;
+  text-align: center;
+  padding: 10px;
+  margin-top: 10px; }
+  .task-container .title {
+    text-align: left;
+    overflow: auto;
+    padding-bottom: 10px; }
+    .task-container .title .text {
+      float: left;
+      font-size: 20px;
+      padding-top: 20px; }
+    .task-container .title .button {
+      float: right; }
+      .task-container .title .button button {
+        padding: 10px;
+        font-weight: bold;
+        border-radius: 3px;
+        border: none;
+        cursor: pointer;
+        margin-top: 8px;
+        font-size: 14px;
+        margin-right: 3px;
+        border: 2px solid #006DB9;
+        color: #006DB9;
+        background-color: #fff; }
+        .task-container .title .button button.main {
+          border: 2px solid #eee;
+          color: #fff;
+          background-color: #006DB9;
+          border: 2px solid #006DB9; }
+  .task-container .table {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 3px; }
+    .task-container .table table {
+      width: 100%;
+      text-align: left;
+      border-collapse: collapse;
+      table-layout: fixed; }
+    .task-container .table thead tr th {
+      padding: 8px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+      background-color: #fafafa; }
+      .task-container .table thead tr th.center {
+        text-align: center; }
+    .task-container .table tbody tr td {
+      padding: 8px;
+      text-align: left;
+      border-bottom: 1px solid #eee; }
+      .task-container .table tbody tr td.center {
+        text-align: center; }
+      .task-container .table tbody tr td .btn {
+        font-size: 12px;
+        padding: 5px; }
+
+.loader {
+  text-align: center;
+  padding: 100px 30px; }
+  .loader .loading-text {
+    color: #ccc; }
+  .loader .loading-icon {
+    color: #ccc;
+    font-size: 3em; }
+
+/*# sourceMappingURL=app_layout.css.map */
