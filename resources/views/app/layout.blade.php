@@ -15,49 +15,19 @@
             <div class="timer-countdown-label">TIME SPENT TODAY</div>
             <div class="timer-countdown">00:00:00</div>
             <div class="idle-countdown">00:00:00</div>
-            <button class="time-button">TIME SHEET</button>
-            <button class="logout-button">LOGOUT</button>
+            <button class="time-button"><i class="fa fa-user-circle"></i> {{ strtoupper($session_member->first_name) }} {{ strtoupper($session_member->last_name) }}</button>
+            <button class="logout-button" onclick="location.href='/logout'">LOGOUT</button>
         </div>
         <div class="task-container">
             <div class="title">
                 <div class="text">ONGOING TASK (5)</div>
                 <div class="button">
-                    <button type="button" class="btn btn-primary"><i class="fa fa-sync"></i> REFRESH TASK</button>
+                    <button type="button" class="btn btn-primary refresh-task"><i class="fa fa-sync"></i> REFRESH TASK</button>
                     <button type="button" class="btn btn-primary main add-new-task"><i class="fa fa-plus"></i> ADD NEW TASK</button>
                 </div>
             </div> 
-            <div class="table">
-                <table>
-                    <thead>
-                        <tr>
-                            <th width="150px">PROJECT</th>
-                            <th>TITLE</th>
-                            <th width="150px">TAGS</th>
-                            <th width="200px">DEADLINE</th>
-                            <th width="130px"></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>PHILTECH</td>
-                            <td>Create a border for Philtech News</td>
-                            <td><span class="tags yellow">bug</span></td>
-                            <td>2 HOURS</td>
-                            <td>
-                                <a href="javascript:" class="view-task">VIEW INFO</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>BROWN</td>
-                            <td>Convert Brown Member's Area to APP</td>
-                            <td><span class="tags red">urgent</span> <span class="tags yellow">bug</span></td>
-                            <td>3 DAYS</td>
-                            <td>
-                                <a href="javascript:" class="view-task">VIEW INFO</a>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div class="load-table-ongoing-task-list">
+
             </div>
         </div>
         <!-- TASK INFORMATION -->

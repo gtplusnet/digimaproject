@@ -14,8 +14,35 @@ function dashboard()
 
 	function document_ready()
 	{
+		dashboard.action_load_ongoing_task_list();
+		add_event_refresh_task();
 		add_event_new_task_clicked();
 		add_event_view_task_clicked();
+	}
+
+	this.action_load_ongoing_task_list = function()
+	{
+		$(".modal-loader").find(".loading-text").text("Loading Ongoing Task List");
+		$(".load-table-ongoing-task-list").html(html_modal_loading());
+
+		$.ajax(
+		{
+			url: 		"/app/task_table",
+			data: 		{},
+			type: 		"get",
+			success: function(data)
+			{
+				$(".load-table-ongoing-task-list").html(data);
+			}
+		});
+	}
+
+	function add_event_refresh_task()
+	{
+		$(".refresh-task").click(function()
+		{
+			dashboard.action_load_ongoing_task_list();
+		});
 	}
 
 	function add_event_new_task_clicked()
@@ -32,6 +59,7 @@ function dashboard()
 				type: 		"get",
 				success: function(data)
 				{
+					$(".modal-loader").find(".loading-text").text("Loading Form");
 					$("#add_task").find(".modal-content").html(data);
 				}
 			});
@@ -54,6 +82,7 @@ function dashboard()
 				type: 		"get",
 				success: function(data)
 				{
+					$(".modal-loader").find(".loading-text").text("Loading Task Information");
 					$("#view_task").find(".modal-content").html(data);
 				}
 			});

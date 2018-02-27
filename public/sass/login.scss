@@ -1,0 +1,61 @@
+body{
+    background: url('../img/business-corporate.jpg');
+	background-color: #444;
+	background-attachment: fixed;
+	background-size: cover;
+}
+
+.panel
+{
+	-webkit-box-shadow: 0px 0px 18px 3px rgba(0,0,0,0.15) !important;
+	-moz-box-shadow: 0px 0px 18px 3px rgba(0,0,0,0.15) !important;
+	box-shadow: 0px 0px 18px 3px rgba(0,0,0,0.15) !important;
+}
+
+.vertical-offset-100{
+    padding-top:100px;
+}
+
+.error-container
+{
+	margin: 0 20px;
+	margin-top: 20px;
+	text-align: center;
+}
+
+
+.btn
+{
+	&.btn-success
+	{
+		background-color: #0D2C7F;
+		border: 1px solid #0D2C7F;
+		opacity: 0.9;
+
+		&:hover
+		{
+			background-color: #0D2C7F;
+			border: 1px solid #0D2C7F;
+			opacity: 1.0;
+		}
+
+		&:active
+		{
+			background-color: #0D2C7F !important;
+			border: 1px solid #0D2C7F !important;
+			opacity: 1.0;
+		}
+
+		&:focus
+		{
+			background-color: #0D2C7F !important;
+			border: 1px solid #0D2C7F !important;
+			opacity: 1.0;
+		}
+	}
+}
+
+.logo
+{
+	margin-bottom: 20px;
+}
