@@ -15,7 +15,7 @@ class UpdateTblMemberTask extends Migration
     {
         Schema::table('tbl_member', function (Blueprint $table)
         {
-            $table->string('member_task');
+            $table->integer('member_task')->unsigned();
             $table->dateTime('last_work_time')->nullable();
         });
     }

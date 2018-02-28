@@ -15,7 +15,7 @@ class UpdateTblMemberIdle extends Migration
     {
         Schema::table('tbl_member', function (Blueprint $table)
         {
-            $table->integer('member_idle_allowed')->default(300);
+            $table->integer('member_idle_allowed')->default(150);
         });
     }
 

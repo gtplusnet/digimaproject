@@ -47,8 +47,6 @@ class AppController extends Controller
 
     public function task_table()
     {
-    	sleep(1);
-
     	$__task 			= null;
     	$_task 				= Tbl_task::project()->assignedBy()->orderBy("task_deadline")->get();
 
@@ -70,7 +68,6 @@ class AppController extends Controller
     {
     	$data["_project"] 	= Tbl_project::get();
     	$data["_tags"] 		= Tbl_tags::get();
-    	sleep(1);
     	return view("app.add_task", $data);
     }
     public function add_task_submit(Request $request)
@@ -100,12 +97,10 @@ class AppController extends Controller
 	    	Tbl_task_tags::insert($insert_tags);
     	}
 
-    	sleep(1);
     	return json_encode($request->all());
     }
     public function view_task($task_id)
     {
-    	sleep(1);
     	$task 				= Tbl_task::project()->where("task_id", $task_id)->first();
     	$task->tags  		= Tags::get($task->task_id);
     	$task->deadline 	= Helper::timeUntil($task->task_deadline);
@@ -117,8 +112,6 @@ class AppController extends Controller
 
     public function time_in(Request $request)
     {
-    	sleep(1);
-
     	$update["member_task"] 		= $request->task_id;
     	$update["last_work_time"] 	= Carbon::now();
     	Tbl_member::where("member_id", $this->member->member_id)->update($update);
