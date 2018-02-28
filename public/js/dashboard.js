@@ -45,6 +45,7 @@ function dashboard()
 			idle = false;
 			$(".idle-cover").hide();
 			action_timein(current_task);
+			window.external.topMostFalse();
 		});
 	}
 
@@ -160,8 +161,8 @@ function dashboard()
 	{
 		if(idle_time > idle_allowed && idle == false && active_timesheet)
 		{
+			window.external.topMostTrue();
 			idle = true;
-			//$(".resume-work").attr("task_id", active_timesheet);
 			$(".idle-cover").show();
 			action_timeout();
 		}
@@ -169,10 +170,12 @@ function dashboard()
 		if(!active_timesheet)
 		{
 			action_update_status_helper("<b>Time is NOT running.</b> You can start working by choosing a task. ", "red", "#fff");
+			window.external.topMostTrue();
 		}
 		else
 		{
-			action_update_status_helper("Time is now running", "green", "#fff");
+			action_update_status_helper("<b>Time is now running</b> You can now proceed with your work.", "green", "#fff");
+			window.external.topMostFalse();
 		}
 
 		action_update_display_time();
