@@ -100,6 +100,7 @@ class LoginController extends Controller
         	$insert["username"] 			= $request->username;	
         	$insert["password"] 			= Hash::make($request->password);
         	$insert["create_date_time"] 	= Carbon::now();
+            $insert["last_work_time"]       = Carbon::now();
         	$insert["sponsor"] 				= 0;
         	$insert["create_ip_address"] 	= $_SERVER['REMOTE_ADDR'];
             $insert["verified_mail"]        = 1;

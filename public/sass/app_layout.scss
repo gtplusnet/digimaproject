@@ -3,6 +3,36 @@ body
 	background-color: 	#eee;
 	font-family: 		'Roboto', sans-serif;
 	padding-top: 		10px;
+	padding-top: 		50px;
+}
+
+.idle-cover
+{
+	z-index: 			100;
+	top: 				0;
+	left: 				0;
+	right: 				0;
+	bottom: 			0;
+	position: 			fixed;
+	background-color: 	rgba(0,0,0,0.9);
+	align-items: center;
+	display: flex;
+	justify-content: center;
+	color: #fff;
+}
+
+.status-helper
+{
+	position: 			absolute;
+	top: 				0;
+	left: 				0;
+	right: 				0;
+	height: 			30px;
+	color: 				#fff;
+	box-sizing: 		border-box;
+	padding: 			6px;
+	text-align: 		center;
+	font-size: 			14px;
 }
 
 .saving
@@ -47,6 +77,8 @@ body
 
 		.log-list
 		{
+			padding-top: 	15px;
+
 			.log
 			{
 				margin-left: 		80px;
@@ -307,18 +339,24 @@ body
 	{
 		min-height: 	100px;
 		border-right: 	1px solid #e9ecef;
-		padding-left: 	10px;
+		padding: 		10px;
+
+		border: 		1px solid #ddd;
+		border-radius:	3px;
+
 
 		.tags-container
 		{
 			padding-bottom:		10px;
+			overflow: 			auto;
 
 			.deadline
 			{
 				font-size:		14px;
 				color: 			#aaa;
-				padding: 		5px;
+				padding: 		3px;
 				padding-left: 	8px;
+				float: 			right;
 			}
 		}
 		.no-detail
@@ -360,6 +398,12 @@ body
 					background-color: 	#2B8FCE;
 					border: 2px solid 	#2B8FCE;
 					color: 				#fff;
+				}
+				&.stop
+				{
+					background-color: 	#fff;
+					border: 2px solid 	#c40000;
+					color: 				#c40000;
 				}
 			}
 		}
@@ -530,6 +574,14 @@ body
 					text-align: 	left;
 					border-bottom:  1px solid #eee;
 
+					a
+					{
+						text-decoration: none;
+						&:hover
+						{
+							text-decoration: none;
+						}
+					}
 
 					&.center
 					{

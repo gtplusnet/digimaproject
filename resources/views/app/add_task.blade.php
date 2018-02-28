@@ -31,15 +31,32 @@
                 </div>
             </div>
             <div class="col-md-6">
-                <label>Attachment</label>
-                <div class="custom-file">
-                    <input name="attachment" type="file" class="custom-file-input">
-                    <label class="custom-file-label" for="validatedCustomFile"></label>
-                    <div class="invalid-feedback">Example invalid custom file feedback</div>
+                <label>Deadline Time</label>
+                <div class="form-group">
+                    <select name="deadline_time" class="form-control">
+                        <option>06:00 AM</option>
+                        <option>07:00 AM</option>
+                        <option>08:00 AM</option>
+                        <option>09:00 AM</option>
+                        <option>10:00 AM</option>
+                        <option>11:00 AM</option>
+                        <option>12:00 PM</option>
+                        <option>01:00 PM</option>
+                        <option>02:00 PM</option>
+                        <option>03:00 PM</option>
+                        <option>04:00 PM</option>
+                        <option>05:00 PM</option>
+                        <option selected>06:00 PM</option>
+                        <option>07:00 PM</option>
+                        <option>08:00 PM</option>
+                        <option>09:00 PM</option>
+                        <option>10:00 PM</option>
+                        <option>11:00 PM</option>
+                        <option>12:00 AM</option>
+                    </select>
                 </div>
             </div>
-
-            <div class="col-md-12">
+            <div class="col-md-6">
                 <label>Tags</label>
                 <div class="row">
                     <div style="margin-left: 20px;">
@@ -54,6 +71,14 @@
                         </div>
                         @endforeach
                     </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <label>Attachment</label>
+                <div class="custom-file">
+                    <input name="attachment" type="file" class="custom-file-input">
+                    <label class="custom-file-label" for="validatedCustomFile"></label>
+                    <div class="invalid-feedback">Example invalid custom file feedback</div>
                 </div>
             </div>
         </div>

@@ -11,10 +11,15 @@
         <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
     </head>
     <body>
-        <div class="timer-counter">
+        <div class="idle-cover" style="display: none;">
+            <button class="btn btn-danger resume-work"><strong><i class="fa fa-exclamation-triangle"></i> You were tagged as IDLE.</strong><br>Click HERE to resume work now.<br></button>
+        </div>
+        <div class="status-helper"></div>
+        <div class="timer-counter" idle_allowed="10" current_task="{{ $session_member->member_task }}" time_spent_today="{{ $time_spent_today }}" hours="{{ date('H') }}" minutes="{{ date('i') }}" seconds="{{ date('s') }}">
             <div class="timer-countdown-label">TIME SPENT TODAY</div>
             <div class="timer-countdown">00:00:00</div>
-            <div class="idle-countdown">00:00:00</div>
+            <div class="idle-countdown">00:00:00 AM</div>
+            <div style="display: none;" class="idle-time">0</div>
             <button class="time-button"><i class="fa fa-user-circle"></i> {{ strtoupper($session_member->first_name) }} {{ strtoupper($session_member->last_name) }}</button>
             <button class="logout-button" onclick="location.href='/logout'">LOGOUT</button>
         </div>

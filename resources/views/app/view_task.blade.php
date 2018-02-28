@@ -1,5 +1,5 @@
 <div class="modal-header">
-    <h5 class="modal-title"><strong>PHILTECH</strong> (Create a border for Philtech News)</h5>
+    <h5 class="modal-title"><strong>{{ strtoupper($task->project_name) }}</strong> ({{ $task->task_title }})</h5>
     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
     <span aria-hidden="true">&times;</span>
     </button>
@@ -10,15 +10,11 @@
         <div class="col-md-8">
             <div class="task-detail-container">
                 <div class="tags-container">
-                    <span class="tags red">urgent</span> <span class="tags yellow">bug</span>
-                    <span class="deadline">Deadline ends in 2 days and 4 hours</span>
+                    {!! $task->tags !!}
+                    <span class="deadline">Deadline ends in <strong>{!! $task->deadline !!}</strong></span>
                 </div>
-            <!-- <div class="no-detail">NO DETAILS REGARDING THIS TASK</div> -->
-                <div class="task-detail">The menus need to be Horizontal, the submenus need to be Horizintal. and the sub submenus need to be Horizontal all layered underneatheach other, and the text below will move down. The links will be onclick not hover. also the width and height will be auto with a small padding maybe 10px 10px, the buttons will not be the same size, that will depend on the amount of text. 
 
-The header will be a .ping on the site until it is in moble view and then it will be just text. also the header will move up but he menu will stop at top of page staying visable. in moble view the text site name will be to the left on the menu bar and the hamburger button will be on the right to open the menu.  
-
-The last menu will be for a login and will need to be vertical.</div>
+                <div class="task-detail">{!! $task->task_detail !!}</div>
             </div>
         </div>
 
@@ -26,7 +22,14 @@ The last menu will be for a login and will need to be vertical.</div>
         <div class="col-md-4">
             <div class="task-action-container">
                 <div class="action">
-                    <button class="main"><i class="fa fa-clock"></i> Start Working</button>
+                    @if($task->working)
+                        <button class="stop stop-working"><i class="fa fa-stop-circle"></i> Stop Working</button>
+                    @else
+                        <button class="main start-working" current_date="{{ date('Y-m-d') }}" member_id="{{ $session_member->member_id }}" task_id="{{ $task->task_id }}"><i class="fa fa-play-circle"></i> Start Working</button>
+                    @endif
+
+                    <button style="display: none;" class="main start-working-loading"><i class="fa fa-spinner fa-pulse"></i> Notifying Server</button>
+
                 </div>
                 <div class="action">
                     <button><i class="fa fa-check"></i> Submit for Review</button>
@@ -37,9 +40,9 @@ The last menu will be for a login and will need to be vertical.</div>
         <!-- TASK DISCUSSION -->
         <div class="col-md-12">
             <div class="task-discussion">
-                <div class="title"><i class="fa fa-comments"></i> Comments and Discussions</div>
+
                 <!-- LOG/DISCUSSION LIST -->
-                <div class="log-list">
+                <div class="invisible-log-list" style="display: none;">
                     <!-- LOG -->
                     <div class="log">
                         <span class="icon"><i class="fa fa-plus-circle"></i></span>
@@ -84,6 +87,8 @@ The last menu will be for a login and will need to be vertical.</div>
                         </div>
                     </div> 
                 </div>
+                <div class="log-list">
+                </div>
                 <!-- WRITE COMMENT -->
                 <div class="comment-action">
                     <div class="comment-image">
@@ -113,7 +118,6 @@ The last menu will be for a login and will need to be vertical.</div>
                             <button class="main"><i class="fa fa-comment"></i> Post Comment</button>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>

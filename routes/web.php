@@ -14,6 +14,9 @@
 Route::get('/', 'FrontController@login');
 Route::get('/app', 'AppController@dashboard');
 
+Route::get('/app/time_in', 'AppController@time_in');
+Route::get('/app/time_out', 'AppController@time_out');
+Route::get('/app/update_time_out', 'AppController@update_time_out');
 Route::get('/app/add_task', 'AppController@add_task');
 Route::post('/app/add_task', 'AppController@add_task_submit');
 Route::get('/app/task_table', 'AppController@task_table');
