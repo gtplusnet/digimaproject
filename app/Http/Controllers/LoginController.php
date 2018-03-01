@@ -12,6 +12,10 @@ use App\Tbl_login;
 
 class LoginController extends Controller
 {
+    public function to_login()
+    {
+        return redirect("/login");
+    }
     public function index()
     {
     	return view("login");

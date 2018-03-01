@@ -25,12 +25,49 @@
         </div>
         <div class="task-container">
             <div class="title">
-                <div class="text">ONGOING TASK (5)</div>
+                @if($session_member->member_admin == 1)
+                <div class="text"><i class="fa fa-tasks"></i> TASK LIST</div>
+                @else
+                <div class="text"><i class="fa fa-tasks"></i> ONGOING TASK</div>
+                @endif
                 <div class="button">
                     <button type="button" class="btn btn-primary refresh-task"><i class="fa fa-sync"></i> REFRESH TASK</button>
                     <button type="button" class="btn btn-primary main add-new-task"><i class="fa fa-plus"></i> ADD NEW TASK</button>
                 </div>
             </div> 
+            <div class="task-filters">
+                <div class="row no-gutters">
+                    <div class="col-md-3">
+                        <select class="form-control filter-assignee">
+                            <option value="0">All Employee</option>
+                            @foreach($_member as $member)
+                            <option {{ $member->member_id == $session_member->member_id ? 'selected' : '' }} value="{{ $member->member_id }}">{{ $member->first_name }} {{ $member->last_name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="col-md-2" style="padding-left: 5px;">
+                        <select class="form-control filter-project">
+                            <option value="0">All Project</option>
+                            @foreach($_project as $project)
+                            <option value="{{ $project->project_id }}">{{ $project->project_name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="col-md-2" style="padding-left: 5px;">
+                        <select class="form-control filter-tags">
+                            <option value="0">All Tags</option>
+                            @foreach($_tags as $tags)
+                            <option value="{{ $tags->tag_id }}">{{ ucfirst($tags->tag_label) }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" class="form-control" placeholder="Search title of task...">
+                    </div>
+                </div>
+            </div>
             <div class="load-table-ongoing-task-list">
 
             </div>

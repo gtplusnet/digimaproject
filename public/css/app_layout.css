@@ -263,7 +263,8 @@ body {
 .modal-add-task .details {
   resize: none;
   height: 200px; }
-.modal-add-task input[type=text] {
+
+input[type=text] {
   padding: 8px;
   line-height: 14px; }
 
@@ -297,7 +298,7 @@ body {
     border-radius: 3px;
     border: none;
     cursor: pointer;
-    font-size: 14px; }
+    font-size: 12px; }
   .timer-counter button.logout-button {
     margin-top: 10px;
     border: 1px solid #eee;
@@ -308,7 +309,7 @@ body {
     border-radius: 3px;
     border: none;
     cursor: pointer;
-    font-size: 14px; }
+    font-size: 12px; }
 
 .task-container {
   width: 90%;
@@ -327,12 +328,12 @@ body {
     .task-container .title .button {
       float: right; }
       .task-container .title .button button {
-        padding: 10px;
+        padding: 5px 10px;
         font-weight: bold;
         border-radius: 3px;
         border: none;
         cursor: pointer;
-        margin-top: 8px;
+        margin-top: 12px;
         font-size: 14px;
         margin-right: 3px;
         border: 2px solid #006DB9;
@@ -343,24 +344,28 @@ body {
           color: #fff;
           background-color: #006DB9;
           border: 2px solid #006DB9; }
+  .task-container .task-filters {
+    margin-bottom: 5px;
+    font-size: 14px; }
   .task-container .table {
     background-color: #fff;
     border: 1px solid #ddd;
-    border-radius: 3px; }
+    border-radius: 3px;
+    font-size: 14px; }
     .task-container .table table {
       width: 100%;
       text-align: left;
       border-collapse: collapse;
       table-layout: fixed; }
     .task-container .table thead tr th {
-      padding: 8px;
+      padding: 5px;
       text-align: left;
       border-bottom: 1px solid #ddd;
       background-color: #fafafa; }
       .task-container .table thead tr th.center {
         text-align: center; }
     .task-container .table tbody tr td {
-      padding: 8px;
+      padding: 5px;
       text-align: left;
       border-bottom: 1px solid #eee; }
       .task-container .table tbody tr td a {

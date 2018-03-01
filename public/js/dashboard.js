@@ -7,6 +7,7 @@ var idle = false;
 var idle_time = 0;
 var idle_allowed = 0;
 var current_task = 0;
+var ajax_task_data = {};
 
 function idle_from_csharp(idlex_time)
 {
@@ -36,6 +37,36 @@ function dashboard()
 		add_event_start_working();
 		add_event_stop_working();
 		add_event_resume_work();
+		add_event_filter_change();
+	}
+
+	this.action_load_ongoing_task_list = function()
+	{
+		$(".modal-loader").find(".loading-text").text("Loading Ongoing Task List");
+		$(".load-table-ongoing-task-list").html(html_modal_loading());
+
+		ajax_task_data.assignee = 	$(".filter-assignee").val();
+		ajax_task_data.project = 	$(".filter-project").val();
+		ajax_task_data.tags = 		$(".filter-tags").val();
+
+		$.ajax(
+		{
+			url: 		"/app/task_table",
+			data: 		ajax_task_data,
+			type: 		"get",
+			success: function(data)
+			{
+				$(".load-table-ongoing-task-list").html(data);
+			}
+		});
+	}
+
+	function add_event_filter_change()
+	{
+		$(".filter-assignee").change(function()
+		{
+			dashboard.action_load_ongoing_task_list();
+		});
 	}
 
 	function add_event_resume_work()
@@ -127,7 +158,11 @@ function dashboard()
 			else
 			{
 				current_task = $(".timer-counter").attr("current_task");
-				action_timein(current_task);
+
+				if(current_task != 0)
+				{
+					action_timein(current_task);
+				}
 			}
 
 			setInterval(function()
@@ -174,7 +209,7 @@ function dashboard()
 		}
 		else
 		{
-			action_update_status_helper("<b>Time is now running</b> You can now proceed with your work.", "green", "#fff");
+			action_update_status_helper("<b>Time is now running.</b> You can now proceed with your work.", "green", "#fff");
 			window.external.topMostFalse();
 		}
 
@@ -251,22 +286,7 @@ function dashboard()
 		return ("0" + myNumber).slice(-2);
 	}
 
-	this.action_load_ongoing_task_list = function()
-	{
-		$(".modal-loader").find(".loading-text").text("Loading Ongoing Task List");
-		$(".load-table-ongoing-task-list").html(html_modal_loading());
 
-		$.ajax(
-		{
-			url: 		"/app/task_table",
-			data: 		{},
-			type: 		"get",
-			success: function(data)
-			{
-				$(".load-table-ongoing-task-list").html(data);
-			}
-		});
-	}
 
 	function add_event_refresh_task()
 	{

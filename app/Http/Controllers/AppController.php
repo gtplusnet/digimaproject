@@ -31,8 +31,8 @@ class AppController extends Controller
 			}
 			else
 			{
-				$this->member = $member;
-				view()->share("session_member", $member);
+                $this->member = $member;
+                view()->share("session_member", $member);
 			}
 
 			return $next($request);
@@ -42,13 +42,23 @@ class AppController extends Controller
     {
     	$data["page"] 				= "App Dashboard";
     	$data["time_spent_today"] 	= Tbl_timesheet::where("timesheet_date", date("Y-m-d"))->where("member_id", $this->member->member_id)->sum("second_spent");
-    	return view("app.dashboard", $data);
+        $data["_member"]            = Tbl_member::get();
+        $data["_project"]           = Tbl_project::get();
+        $data["_tags"]              = Tbl_tags::get();
+        return view("app.dashboard", $data);
     }
 
-    public function task_table()
+    public function task_table(Request $request)
     {
     	$__task 			= null;
-    	$_task 				= Tbl_task::project()->filterAssignee($this->member->member_id)->assignedBy()->orderBy("task_deadline")->get();
+    	$_task 				= Tbl_task::project()->assignedBy()->orderBy("task_deadline");
+
+        if($request->assignee != 0)
+        {
+            $_task->filterAssignee($request->assignee);
+        }
+
+        $_task              = $_task->get();
 
     	foreach($_task as $key => $task)
     	{
@@ -60,7 +70,15 @@ class AppController extends Controller
 
     	$data["_task"] 		= $__task;
 
-    	return view("app.task_table", $data);
+        if($this->member->member_admin == 1)
+        {
+            return view("app.task_table_admin", $data);
+        }
+        else
+        {
+            return view("app.task_table", $data);
+        }
+
     }
 
 

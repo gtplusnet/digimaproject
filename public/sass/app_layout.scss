@@ -417,15 +417,14 @@ body
 		resize: 		none;
 		height: 		200px;
 	}
-
-	input[type=text]
-	{
-		padding: 		8px;
-		line-height: 	14px;
-
-	}
 }
 
+input[type=text]
+{
+	padding: 		8px;
+	line-height: 	14px;
+
+}
 .timer-counter
 {
 	width: 				300px;
@@ -466,7 +465,7 @@ body
 		border-radius: 		3px;
 		border: 			none;
 		cursor: 			pointer;
-		font-size: 			14px;
+		font-size: 			12px;
 	}
 	button.logout-button
 	{
@@ -479,7 +478,7 @@ body
 		border-radius: 		3px;
 		border: 			none;
 		cursor: 			pointer;
-		font-size: 			14px;
+		font-size: 			12px;
 	}
 }
 
@@ -509,12 +508,12 @@ body
 
 			button
 			{
-				padding: 			10px;
+				padding: 			5px 10px;
 				font-weight: 		bold;
 				border-radius: 		3px;
 				border: 			none;
 				cursor: 			pointer;
-				margin-top: 		8px;
+				margin-top: 		12px;
 				font-size: 			14px;
 				margin-right: 		3px;
 				border: 			2px solid #006DB9;
@@ -531,11 +530,17 @@ body
 			}
 		}
 	}
+	.task-filters
+	{
+		margin-bottom: 	5px;
+		font-size: 		14px;
+	}
 	.table
 	{
 		background-color: 	#fff;
 		border: 			1px solid #ddd;
 		border-radius: 		3px;
+		font-size: 			14px;
 
 		table
 		{
@@ -552,7 +557,7 @@ body
 			{
 				th
 				{
-					padding: 			8px;
+					padding: 			5px;
 					text-align: 		left;
 					border-bottom:		1px solid #ddd;
 					background-color: 	#fafafa;
@@ -570,7 +575,7 @@ body
 			{
 				td
 				{
-					padding: 		8px;
+					padding: 		5px;
 					text-align: 	left;
 					border-bottom:  1px solid #eee;
 
