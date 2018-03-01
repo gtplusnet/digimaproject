@@ -68,6 +68,12 @@ class AppController extends Controller
             $_task->filterTags($request->tags);
         }
 
+        if($request->search != "")
+        {
+            $_task->where("task_title", "LIKE", "%" . $request->search . "%");
+        }
+
+
         $_task              = $_task->get();
 
     	foreach($_task as $key => $task)

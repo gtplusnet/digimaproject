@@ -64,7 +64,7 @@
                     <div class="col-md-2">
                     </div>
                     <div class="col-md-3">
-                        <input type="text" class="form-control" placeholder="Search title of task...">
+                        <input type="text" class="form-control task-search" placeholder="Search title of task...">
                     </div>
                 </div>
             </div>

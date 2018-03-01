@@ -45,9 +45,10 @@ function dashboard()
 		$(".modal-loader").find(".loading-text").text("Loading Ongoing Task List");
 		$(".load-table-ongoing-task-list").html(html_modal_loading());
 
-		ajax_task_data.assignee = 	$(".filter-assignee").val();
-		ajax_task_data.project = 	$(".filter-project").val();
-		ajax_task_data.tags = 		$(".filter-tags").val();
+		ajax_task_data.assignee 	= $(".filter-assignee").val();
+		ajax_task_data.project 		= $(".filter-project").val();
+		ajax_task_data.tags 		= $(".filter-tags").val();
+		ajax_task_data.search 		= $(".task-search").val();
 
 		$.ajax(
 		{
@@ -77,6 +78,14 @@ function dashboard()
 		{
 			dashboard.action_load_ongoing_task_list();
 		});
+
+		$(".task-search").keydown(function(e)
+		{
+			if(e.which == 13)
+			{
+				dashboard.action_load_ongoing_task_list();
+			}
+		})
 	}
 
 	function add_event_resume_work()
