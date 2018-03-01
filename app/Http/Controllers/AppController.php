@@ -41,7 +41,7 @@ class AppController extends Controller
     public function dashboard()
     {
     	$data["page"] 				= "App Dashboard";
-    	$data["time_spent_today"] 	= Tbl_timesheet::where("timesheet_date", date("Y-m-d"))->sum("second_spent");
+    	$data["time_spent_today"] 	= Tbl_timesheet::where("timesheet_date", date("Y-m-d"))->where("member_id", $this->member->member_id)->sum("second_spent");
     	return view("app.dashboard", $data);
     }
 
