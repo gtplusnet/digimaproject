@@ -48,7 +48,7 @@ class AppController extends Controller
     public function task_table()
     {
     	$__task 			= null;
-    	$_task 				= Tbl_task::project()->assignedBy()->orderBy("task_deadline")->get();
+    	$_task 				= Tbl_task::project()->filterAssignee($this->member->member_id)->assignedBy()->orderBy("task_deadline")->get();
 
     	foreach($_task as $key => $task)
     	{

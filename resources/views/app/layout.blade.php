@@ -51,7 +51,7 @@
             </div>
         </div>
 
-        <div class="invisible modal-loader">
+        <div style="display: none;" class="modal-loader">
             <div class="loader">
                 <div class="loading-icon"><i class="fas fa-circle-notch fa-spin"></i></div>
                 <div class="loading-text">Loading Form</div>
