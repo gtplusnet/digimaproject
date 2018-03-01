@@ -58,6 +58,16 @@ class AppController extends Controller
             $_task->filterAssignee($request->assignee);
         }
 
+        if($request->project != 0)
+        {
+            $_task->where("task_project", $request->project);
+        }
+
+        if($request->tags != 0)
+        {
+            $_task->filterTags($request->tags);
+        }
+
         $_task              = $_task->get();
 
     	foreach($_task as $key => $task)

@@ -28,7 +28,7 @@
                 @endforeach
             @else
                 <tr>
-                    <td colspan="5" class="text-center">You don't have any ongoing task.</td>
+                    <td colspan="5" class="text-center">No Result Found</td>
                 </tr>
             @endif
         </tbody>

@@ -67,6 +67,16 @@ function dashboard()
 		{
 			dashboard.action_load_ongoing_task_list();
 		});
+
+		$(".filter-project").change(function()
+		{
+			dashboard.action_load_ongoing_task_list();
+		});
+
+		$(".filter-tags").change(function()
+		{
+			dashboard.action_load_ongoing_task_list();
+		});
 	}
 
 	function add_event_resume_work()
