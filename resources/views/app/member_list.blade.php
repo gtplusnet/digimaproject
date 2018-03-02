@@ -12,6 +12,8 @@
                 <tr>
                     <th class="text-center">Username</th>
                     <th class="text-center">Last Online</th>
+                    <th class="text-center">Undertime</th>
+                    <th class="text-center">Overtime</th>
                     <th class="text-center">Today Render</th>
                 </tr>
             </thead>
@@ -20,6 +22,8 @@
                 <tr>
                     <td class="text-center"><b>{{ '@' . strtolower($member->username) }}</b></td>
                     <td class="text-center">{!! $member->last_online !!}</td>
+                    <td class="text-center">{!! $member->undertime !!}</td>
+                    <td class="text-center">{!! $member->overtime !!}</td>
                     <td class="text-center">{!! $member->today_render !!}</td>
                 </tr>
                 @endforeach

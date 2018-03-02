@@ -148,6 +148,21 @@ class AppController extends Controller
             $__member[$key]                 = $member;
             $__member[$key]->last_online    = Helper::onlineAgo($member->last_work_time);
             $__member[$key]->today_render   = Helper::convertSeconds($second_spent);
+
+            $undertime                      = 28800 - $second_spent;
+
+            if($undertime > 0)
+            {
+                 $__member[$key]->undertime      = Helper::convertSeconds($undertime);
+                 $__member[$key]->overtime       = Helper::convertSeconds(0);
+            }
+            else
+            {
+                 $__member[$key]->overtime      = Helper::convertSeconds($undertime);
+                 $__member[$key]->undertime       = Helper::convertSeconds(0);
+            }
+
+           
         }
 
         $data["_member"]    = $__member;
