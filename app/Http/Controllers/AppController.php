@@ -153,13 +153,13 @@ class AppController extends Controller
 
             if($undertime > 0)
             {
-                 $__member[$key]->undertime      = Helper::convertSeconds($undertime);
+                 $__member[$key]->undertime      = "<span style='color: red;'>" . Helper::convertSeconds($undertime) . "</span>";
                  $__member[$key]->overtime       = Helper::convertSeconds(0);
             }
             else
             {
                 $undertime                      = $undertime * -1;
-                 $__member[$key]->overtime      = Helper::convertSeconds($undertime);
+                 $__member[$key]->overtime      = "<span style='color: green;'>" . Helper::convertSeconds($undertime) . "</span>";
                  $__member[$key]->undertime       = Helper::convertSeconds(0);
             }
 
