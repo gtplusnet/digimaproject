@@ -82,7 +82,13 @@ function dashboard()
 
 	function add_event_view_timesheet()
 	{
-		
+		$(".click-view-timesheet").click(function()
+		{
+			$(".modal-loader").find(".loading-text").text("Loading Timesheet");
+			$("#manage_members").find(".modal-content").html(html_modal_loading());
+			$("#manage_members").modal("show");
+			$("#manage_members").find(".modal-content").load("/app/timesheet");
+		});
 	}
 
 	function add_event_filter_change()

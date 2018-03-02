@@ -2,6 +2,7 @@
     <table>
         <thead>
             <tr>
+                <th width="40">REF</th>
                 <th width="150px">PROJECT</th>
                 <th>TITLE</th>
                 <th class="text-center" width="250">TAGS</th>
@@ -14,6 +15,7 @@
             @if($_task)
                 @foreach($_task as $task)
                 <tr>
+                    <td>{{ $task->task_id }}</td>
                     <td>{{ strtoupper($task->project_name) }}</td>
                     <td>{{ $task->task_title }}</td>
                     <td class="text-center">{!! $task->tags !!}</td>

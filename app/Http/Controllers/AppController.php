@@ -48,6 +48,31 @@ class AppController extends Controller
         return view("app.dashboard", $data);
     }
 
+    public function timesheet()
+    {
+        $data["page"]               = "Timesheet";
+        return view("app.timesheet", $data);
+    }
+    public function timesheet_table(Request $request)
+    {
+        $data["page"]               = "Timesheet";
+        $__timesheet                = null;
+        $_timesheet                 = Tbl_timesheet::where("timesheet_date", date("Y-m-d", strtotime($request->date_filter)))->where("member_id", $this->member->member_id)->where("second_spent", "!=", 0)->get();
+        $total_second_spent         = Tbl_timesheet::where("timesheet_date", date("Y-m-d", strtotime($request->date_filter)))->where("member_id", $this->member->member_id)->where("second_spent", "!=", 0)->sum("second_spent");
+
+        foreach($_timesheet as $key => $timesheet)
+        {
+            $__timesheet[$key]                  = $timesheet;
+            $__timesheet[$key]->time_in         = Carbon::parse($timesheet->time_in)->format("h:i A");
+            $__timesheet[$key]->time_out        = Carbon::parse($timesheet->time_out)->format("h:i A");
+            $__timesheet[$key]->second_spent    = Helper::convertSeconds($timesheet->second_spent);
+        }
+
+        $data["_timesheet"]                     = $__timesheet;
+        $data["total_second_spent"]             = Helper::convertSeconds($total_second_spent);
+        return view("app.timesheet_table", $data);
+    }
+
     public function member_list()
     {
         $data["page"]       = "Member List";

@@ -8,7 +8,7 @@
     </div>
     <div class="modal-body">
         <table class="table table-sm">
-            <thead style="background-color: #ddd; color: #333; border: none;">
+            <thead style="background-color: #eee; color: #333; border: none;">
                 <tr>
                     <th class="text-center">Username</th>
                     <th class="text-center">Last Online</th>
