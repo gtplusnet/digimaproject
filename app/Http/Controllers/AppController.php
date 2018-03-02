@@ -62,12 +62,33 @@ class AppController extends Controller
         $_timesheet                 = Tbl_timesheet::where("timesheet_date", date("Y-m-d", strtotime($request->date_filter)))->where("member_id", $request->member_id)->where("second_spent", "!=", 0)->get();
         $total_second_spent         = Tbl_timesheet::where("timesheet_date", date("Y-m-d", strtotime($request->date_filter)))->where("member_id", $request->member_id)->where("second_spent", "!=", 0)->sum("second_spent");
 
+        $previous_time_out          = null;
+
         foreach($_timesheet as $key => $timesheet)
         {
+            if($previous_time_out == null)
+            {
+                $break_span         = "00:00";
+            }
+            else
+            {
+                $datetime1  = new DateTime('2009-10-11 ' . $previous_time_out);
+                $datetime2  = new DateTime('2009-10-11 ' . $timesheet->time_in);
+                $interval   = $datetime1->diff($datetime2);
+                $break_span = $interval->format("%H:%I");
+
+                if($break_span != "00:00")
+                {
+                    $break_span = "<span style='color: red;'>" . $break_span . "</span>";
+                }
+            }
+
             $__timesheet[$key]                  = $timesheet;
             $__timesheet[$key]->time_in         = Carbon::parse($timesheet->time_in)->format("h:i A");
             $__timesheet[$key]->time_out        = Carbon::parse($timesheet->time_out)->format("h:i A");
+            $__timesheet[$key]->break_span      = $break_span;
             $__timesheet[$key]->second_spent    = Helper::convertSeconds($timesheet->second_spent);
+            $previous_time_out                  = $timesheet->time_out;
         }
 
         $data["_timesheet"]                     = $__timesheet;
