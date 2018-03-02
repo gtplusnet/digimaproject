@@ -78,7 +78,7 @@ class AppController extends Controller
                 $datetime2      = new DateTime('2009-10-11 ' . $timesheet->time_in);
                 $interval       = $datetime1->diff($datetime2);
                 $break_span     = $interval->format("%H:%I");
-                $total_break    += $interval->format("%s");
+                $total_break    += intval($interval->format("%s")) + intval($interval->format("%i")) * 60 + intval($interval->format("%H") * 3600);
 
                 if($break_span != "00:00")
                 {
