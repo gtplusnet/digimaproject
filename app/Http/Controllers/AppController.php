@@ -181,8 +181,6 @@ class AppController extends Controller
 
     public function time_out(Request $request)
     {
-    	sleep(1);
-
     	$update["member_task"] 		= 0;
     	$update["last_work_time"] 	= Carbon::now();
     	Tbl_member::where("member_id", $this->member->member_id)->update($update);
@@ -192,6 +190,9 @@ class AppController extends Controller
 
     public function update_time_out(Request $request)
     {
+        $update["last_work_time"]   = Carbon::now();
+        Tbl_member::where("member_id", $this->member->member_id)->update($update);
+
     	$timesheet_id 				= $request->timesheet_id;
     	$timesheet_info 			= Tbl_timesheet::where("timesheet_id", $timesheet_id)->first();
     	$update["time_out"] 		= date("H:i:s");
