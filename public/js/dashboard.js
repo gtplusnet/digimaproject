@@ -38,6 +38,8 @@ function dashboard()
 		add_event_stop_working();
 		add_event_resume_work();
 		add_event_filter_change();
+		add_event_manage_members();
+		add_event_for_markdown_box();
 	}
 
 	this.action_load_ongoing_task_list = function()
@@ -60,6 +62,21 @@ function dashboard()
 				$(".load-table-ongoing-task-list").html(data);
 			}
 		});
+	}
+
+	function add_event_for_markdown_box()
+	{
+		$(".click-manage-members").click(function()
+		{
+			$(".modal-loader").find(".loading-text").text("Checking Member Status");
+			$("#manage_members").find(".modal-content").html(html_modal_loading());
+			$("#manage_members").modal("show");
+			$("#manage_members").find(".modal-content").load("/app/member_list");
+		});
+	}
+	function add_event_manage_members()
+	{
+		$(".manage_members")
 	}
 
 	function add_event_filter_change()

@@ -20,6 +20,7 @@ Route::get('/app/add_task', 'AppController@add_task');
 Route::post('/app/add_task', 'AppController@add_task_submit');
 Route::get('/app/task_table', 'AppController@task_table');
 Route::get('/app/view_task/{id}', 'AppController@view_task');
+Route::get('/app/member_list', 'AppController@member_list');
 
 Route::get('/admin', 'AdminController@index');
 

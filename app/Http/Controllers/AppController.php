@@ -48,6 +48,23 @@ class AppController extends Controller
         return view("app.dashboard", $data);
     }
 
+    public function member_list()
+    {
+        $data["page"]       = "Member List";
+        $__member           = null;
+        $_member            = Tbl_member::get();
+
+        foreach($_member as $key => $member)
+        {
+            $__member[$key]                 = $member;
+            $__member[$key]->last_online    = Helper::onlineAgo($member->last_work_time);
+        }
+
+        $data["_member"]    = $__member;
+
+        return view("app.member_list", $data);
+    }
+
     public function task_table(Request $request)
     {
     	$__task 			= null;
