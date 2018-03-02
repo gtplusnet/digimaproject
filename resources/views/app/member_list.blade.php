@@ -14,6 +14,7 @@
                     <th class="text-center">First Name</th>
                     <th class="text-center">Last Name</th>
                     <th class="text-center">Last Online</th>
+                    <th class="text-center">Today Render</th>
                 </tr>
             </thead>
             <tbody>
@@ -23,6 +24,7 @@
                     <td class="text-center">{{ $member->first_name }}</td>
                     <td class="text-center">{{ $member->last_name }}</td>
                     <td class="text-center">{!! $member->last_online !!}</td>
+                    <td class="text-center">{!! $member->today_render !!}</td>
                 </tr>
                 @endforeach
             </tbody>

@@ -45,7 +45,7 @@ class Helper
         //Minutes
         else if($minutes <=60){
             if($minutes==1){
-                return "one minute ago";
+                return "1 minute ago";
             }
             else{
                 return "$minutes minutes ago";
@@ -91,6 +91,13 @@ class Helper
                 return "$years years ago";
             }
         }
+    }
+    public static function convertSeconds($init)
+    {
+        $hours = sprintf("%02d", floor($init / 3600));
+        $minutes = sprintf("%02d", floor(($init / 60) % 60));
+        $seconds = sprintf("%02d", $init % 60);
+        return "$hours:$minutes:$seconds";
     }
     public static function timeUntil($deadline)
     {

@@ -56,8 +56,11 @@ class AppController extends Controller
 
         foreach($_member as $key => $member)
         {
+            $second_spent                   = Tbl_timesheet::where("timesheet_date", date("Y-m-d"))->where("member_id", $member->member_id)->sum("second_spent");
+
             $__member[$key]                 = $member;
             $__member[$key]->last_online    = Helper::onlineAgo($member->last_work_time);
+            $__member[$key]->today_render   = Helper::convertSeconds($second_spent);
         }
 
         $data["_member"]    = $__member;
