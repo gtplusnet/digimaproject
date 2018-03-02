@@ -51,14 +51,16 @@ class AppController extends Controller
     public function timesheet()
     {
         $data["page"]               = "Timesheet";
+        $data["_member"]            = Tbl_member::get();
+
         return view("app.timesheet", $data);
     }
     public function timesheet_table(Request $request)
     {
         $data["page"]               = "Timesheet";
         $__timesheet                = null;
-        $_timesheet                 = Tbl_timesheet::where("timesheet_date", date("Y-m-d", strtotime($request->date_filter)))->where("member_id", $this->member->member_id)->where("second_spent", "!=", 0)->get();
-        $total_second_spent         = Tbl_timesheet::where("timesheet_date", date("Y-m-d", strtotime($request->date_filter)))->where("member_id", $this->member->member_id)->where("second_spent", "!=", 0)->sum("second_spent");
+        $_timesheet                 = Tbl_timesheet::where("timesheet_date", date("Y-m-d", strtotime($request->date_filter)))->where("member_id", $request->member_id)->where("second_spent", "!=", 0)->get();
+        $total_second_spent         = Tbl_timesheet::where("timesheet_date", date("Y-m-d", strtotime($request->date_filter)))->where("member_id", $request->member_id)->where("second_spent", "!=", 0)->sum("second_spent");
 
         foreach($_timesheet as $key => $timesheet)
         {

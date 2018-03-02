@@ -10,7 +10,7 @@
     <tbody>
         @if(!$_timesheet)
             <tr>
-                <td colspan="3" class="text-center">NO RECORD FOUND</td>
+                <td colspan="4" class="text-center">NO RECORD FOUND</td>
             </tr>
         @else
             @foreach($_timesheet as $timesheet)

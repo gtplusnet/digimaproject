@@ -2,7 +2,7 @@
     <table>
         <thead>
             <tr>
-                <th width="40">REF</th>
+                <th width="40">ID</th>
                 <th width="150px">PROJECT</th>
                 <th>TITLE</th>
                 <th class="text-center" width="250">TAGS</th>
