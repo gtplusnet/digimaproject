@@ -8,14 +8,7 @@
         </tr>
     </thead>
     <tbody>
-        @if($session_member->member_admin == 1)
-         <tr>
-            <td class="text-center"><input name="time_in" class="form-control text-center" type="text" value="09:00 AM"></td>
-            <td class="text-center"><input name="time_out" class="form-control text-center" type="text" value="10:00 AM"></td>
-            <td class="text-center"><input name="time_detail" class="form-control text-center" type="text" value="MANUALLY ADDED"></td>
-            <td class="text-right"><button type="submit" class="btn btn-primary save-timesheet-button"><i class="fa fa-save"></i></button></td>
-        </tr>
-        @endif
+
 
         @if(!$_timesheet)
             <tr>
@@ -32,6 +25,15 @@
             </tr>
             @endforeach
 
+        @endif
+
+        @if($session_member->member_admin == 1)
+         <tr>
+            <td class="text-center"><input name="time_in" class="form-control text-center" type="text" value="09:00 AM"></td>
+            <td class="text-center"><input name="time_out" class="form-control text-center" type="text" value="10:00 AM"></td>
+            <td class="text-center"><input name="time_detail" class="form-control text-center" type="text" value="MANUALLY ADDED"></td>
+            <td class="text-right"><button type="submit" class="btn btn-primary save-timesheet-button"><i class="fa fa-save"></i></button></td>
+        </tr>
         @endif
 
         <tfoot>

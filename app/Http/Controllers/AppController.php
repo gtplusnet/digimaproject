@@ -131,7 +131,7 @@ class AppController extends Controller
 
         $data["_timesheet"]                     = $__timesheet;
         $data["total_second_spent"]             = Helper::convertSeconds($total_second_spent);
-        $data["total_break"]                    = Helper::convertSeconds($total_break, true);
+        $data["total_break"]                    = Helper::convertSeconds($total_break);
         return view("app.timesheet_table", $data);
     }
 
