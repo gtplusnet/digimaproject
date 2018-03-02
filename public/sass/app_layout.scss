@@ -14,11 +14,11 @@ body
 	right: 				0;
 	bottom: 			0;
 	position: 			fixed;
-	background-color: 	rgba(0,0,0,0.9);
-	align-items: center;
-	display: flex;
-	justify-content: center;
-	color: #fff;
+	background-color: 	rgba(0,0,0,0.7);
+	align-items: 		center;
+	display: 			flex;
+	justify-content: 	center;
+	color: 				#fff;
 }
 
 .status-helper
@@ -34,6 +34,148 @@ body
 	text-align: 		center;
 	font-size: 			14px;
 }
+
+.task-detail-textarea
+{
+	line-height: 14px;
+}
+
+
+.form-task-add
+{
+
+}
+
+.comment-content
+{
+	width: 				100%;
+	float: 				right;
+	background-color: 	#fff;
+	border: 1px solid 	#c1c1c1;
+	border-radius: 		2px;
+	box-sizing: 		border-box;
+	position: 			relative;
+	min-height: 		100px;
+	margin-bottom: 		15px;
+					
+
+	.callout:before
+	{
+		content: 		"";
+		position: 		absolute;
+		width: 			0;
+		height: 		0;
+		left: 			-22px;
+		top: 			10px;
+		border: 		10px solid transparent;
+		border-right: 	12px solid rgb(193,193,193); /* IE8 Fallback */
+		border-right: 	12px solid rgba(193,193,193,0.5);
+		z-index: 		2;
+	}
+	.callout:after
+	{
+		content: 		"";
+		position: 		absolute;
+		width: 			0;
+		height: 		0;
+		left: 			-20px;
+		top: 			10px;
+		border: 		10px solid transparent;
+		border-right: 	12px solid #F6F8FA;; /* IE8 Fallback */
+		z-index: 		2;
+	}
+	.tab-content
+	{
+		background-color: 	#F6F8FA;
+		overflow: 			auto;
+		.nav-tabs
+		{
+			margin-top: 		10px;
+			padding-left: 		10px;
+
+			.nav-link
+			{
+				color: #333;
+				font-size: 14px;
+				&:hover
+				{
+					border: 1px solid rgba(0,0,0,0);
+
+				}
+
+				&.active
+				{
+					&:hover
+					{
+						border-color: #dee2e6 #dee2e6 #fff;
+					}
+				}
+			}
+		}
+	}
+	.tab-output
+	{
+		.write-comment
+		{
+			margin: 			15px;
+			border: 			1px solid #ddd;
+			padding: 			5px;
+			border-radius: 		3px;
+			background-color: 	#FAFBFC;
+			textarea
+			{
+				width: 				100%;
+				border: 			none;
+				min-height: 		70px;
+				resize: 			none;
+				background-color: 	transparent;
+				font-size: 			14px;
+
+
+				&:focus
+				{
+					outline: none;
+				}
+			}
+
+			.attach-file
+			{
+				border-top: 	1px dotted #ddd;
+				font-size: 		12px;
+				color: 			#aaa;
+				cursor: 		pointer;
+				padding: 		5px;
+				padding-bottom: 0;
+			}
+
+		}
+	}
+	.comment-button
+	{
+		text-align: right;
+		margin-right: 18px;
+		margin-bottom: 15px;
+
+		button
+		{
+			cursor: 			pointer;
+			border: 2px solid 	#2B8FCE;
+			color: 				#2B8FCE;
+			background-color: 	#fff;
+			padding: 			5px 15px;
+			border-radius: 		3px;
+			font-size: 			14px;
+
+			&.main
+			{
+				background-color: 	#2B8FCE;
+				border: 2px solid 	#2B8FCE;
+				color: 				#fff;
+			}
+		}
+	}
+}
+
 
 .saving
 {
@@ -59,6 +201,7 @@ body
 .task-view
 {
 	background-color:  #fefefe;
+	
 	.task-discussion
 	{
 		border-top: 	1px solid #eee;
@@ -116,75 +259,7 @@ body
 									width: 100%;
 					}
 				}
-				.comment-content
-				{
-					width: 				calc(100% - 80px);
-					float: 				right;
-					background-color: 	#fff;
-					border: 1px solid 	#c1c1c1;
-					border-radius: 		2px;
-					box-sizing: 		border-box;
-					position: 			relative;
 
-									
-
-					.callout:before
-					{
-						content: 		"";
-						position: 		absolute;
-						width: 			0;
-						height: 		0;
-						left: 			-22px;
-						top: 			10px;
-						border: 		10px solid transparent;
-						border-right: 	12px solid rgb(193,193,193); /* IE8 Fallback */
-						border-right: 	12px solid rgba(193,193,193,0.5);
-						z-index: 		2;
-					}
-					.callout:after
-					{
-						content: 		"";
-						position: 		absolute;
-						width: 			0;
-						height: 		0;
-						left: 			-20px;
-						top: 			10px;
-						border: 		10px solid transparent;
-						border-right: 	12px solid #F6F8FA;; /* IE8 Fallback */
-						z-index: 		2;
-					}
-
-					.comment-message
-					{
-						
-						font-size: 		14px;
-
-						.comment-header
-						{
-							padding: 			15px;
-							background-color: 	#F6F8FA;
-							border-bottom: 		1px solid #ddd;
-
-							.name
-							{
-								font-weight: bold;
-							}
-							.action
-							{
-								color: #aaa;
-							}
-							.time-ago
-							{
-								
-							}
-						}
-						.comment-text
-						{
-							padding: 15px;
-							white-space: pre-wrap;
-						}
-					}
-				}
 			}
 		}
 
@@ -208,130 +283,6 @@ body
 			.comment-content
 			{
 				width: 				calc(100% - 80px);
-				float: 				right;
-				background-color: 	#fff;
-				border: 1px solid 	#c1c1c1;
-				border-radius: 		2px;
-				box-sizing: 		border-box;
-				position: 			relative;
-				min-height: 		100px;
-								
-
-				.callout:before
-				{
-					content: 		"";
-					position: 		absolute;
-					width: 			0;
-					height: 		0;
-					left: 			-22px;
-					top: 			10px;
-					border: 		10px solid transparent;
-					border-right: 	12px solid rgb(193,193,193); /* IE8 Fallback */
-					border-right: 	12px solid rgba(193,193,193,0.5);
-					z-index: 		2;
-				}
-				.callout:after
-				{
-					content: 		"";
-					position: 		absolute;
-					width: 			0;
-					height: 		0;
-					left: 			-20px;
-					top: 			10px;
-					border: 		10px solid transparent;
-					border-right: 	12px solid #F6F8FA;; /* IE8 Fallback */
-					z-index: 		2;
-				}
-				.tab-content
-				{
-					background-color: 	#F6F8FA;
-					overflow: 			auto;
-					.nav-tabs
-					{
-						margin-top: 		10px;
-						padding-left: 		10px;
-
-						.nav-link
-						{
-							color: #333;
-							font-size: 14px;
-							&:hover
-							{
-								border: 1px solid rgba(0,0,0,0);
-
-							}
-
-							&.active
-							{
-								&:hover
-								{
-									border-color: #dee2e6 #dee2e6 #fff;
-								}
-							}
-						}
-					}
-				}
-				.tab-output
-				{
-					.write-comment
-					{
-						margin: 			15px;
-						border: 			1px solid #ddd;
-						padding: 			5px;
-						border-radius: 		3px;
-						background-color: 	#FAFBFC;
-						textarea
-						{
-							width: 				100%;
-							border: 			none;
-							min-height: 		70px;
-							resize: 			none;
-							background-color: 	transparent;
-							font-size: 			14px;
-
-
-							&:focus
-							{
-								outline: none;
-							}
-						}
-
-						.attach-file
-						{
-							border-top: 	1px dotted #ddd;
-							font-size: 		12px;
-							color: 			#aaa;
-							cursor: 		pointer;
-							padding: 		5px;
-							padding-bottom: 0;
-						}
-
-					}
-				}
-				.comment-button
-				{
-					text-align: right;
-					margin-right: 18px;
-					margin-bottom: 15px;
-
-					button
-					{
-						cursor: 			pointer;
-						border: 2px solid 	#2B8FCE;
-						color: 				#2B8FCE;
-						background-color: 	#fff;
-						padding: 			5px 15px;
-						border-radius: 		3px;
-						font-size: 			14px;
-
-						&.main
-						{
-							background-color: 	#2B8FCE;
-							border: 2px solid 	#2B8FCE;
-							color: 				#fff;
-						}
-					}
-				}
 			}
 		}
 	}

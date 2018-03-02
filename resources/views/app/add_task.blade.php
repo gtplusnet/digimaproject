@@ -1,21 +1,43 @@
 <form class="form-task-add">
     {{ csrf_field() }}
     <div class="modal-header">
-        <h5 class="modal-title"><i class="fa fa-plus-circle"></i> ADD NEW TASK</h5>
+        <h5 class="modal-title"><i class="fa fa-briefcase"></i> Add New Task</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
         <span aria-hidden="true">&times;</span>
         </button>
     </div>
     <div class="modal-body">
         <div class="row">
-            <div class="col-md-6">
-                <label>Task Title</label>
+
+            <div class="col-md-12">
                 <div class="form-group">
-                    <input required minlength="5" name="task_title" type="text" class="form-control">
+                    <input required minlength="5" name="task_title" type="text" class="form-control" placeholder="Title of Task">
                 </div>
             </div>
-            <div class="col-md-6">
-                <label>Project</label>
+
+            <div class="col-md-12">
+                <div class="comment-content">
+                    <div class="tab-content">
+                        <ul class="nav nav-tabs">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="#">Write</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Preview</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="tab-output">
+                        <div class="write-comment">
+                            <textarea placeholder="Task Details"></textarea>
+                            <div class="attach-file"><i class="fa fa-paperclip"></i> Attach files by clicking here.</div>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+
+            <div class="col-md-4">
                 <div class="form-group">
                     <select name="task_project" class="form-control" id="exampleFormControlSelect1">
                         @foreach($_project as $project)
@@ -24,14 +46,15 @@
                     </select>
                 </div>
             </div>
-            <div class="col-md-6">
-                <label>Deadline</label>
+
+            <div class="col-md-4">
                 <div class="form-group">
                     <input class="date-picker form-control" required name="deadline" type="text" value="{{ date('m/d/Y') }}">
                 </div>
             </div>
-            <div class="col-md-6">
-                <label>Deadline Time</label>
+
+            <div class="col-md-4">
+               
                 <div class="form-group">
                     <select name="deadline_time" class="form-control">
                         <option>06:00 AM</option>
@@ -56,7 +79,8 @@
                     </select>
                 </div>
             </div>
-            <div class="col-md-6">
+
+            <div class="col-md-12">
                 <label>Tags</label>
                 <div class="row">
                     <div style="margin-left: 20px;">
@@ -73,14 +97,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
-                <label>Attachment</label>
-                <div class="custom-file">
-                    <input name="attachment" type="file" class="custom-file-input">
-                    <label class="custom-file-label" for="validatedCustomFile"></label>
-                    <div class="invalid-feedback">Example invalid custom file feedback</div>
-                </div>
-            </div>
+
         </div>
     </div>
     <div class="modal-footer">

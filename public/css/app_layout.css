@@ -11,7 +11,7 @@ body {
   right: 0;
   bottom: 0;
   position: fixed;
-  background-color: rgba(0, 0, 0, 0.9);
+  background-color: rgba(0, 0, 0, 0.7);
   align-items: center;
   display: flex;
   justify-content: center;
@@ -28,6 +28,94 @@ body {
   padding: 6px;
   text-align: center;
   font-size: 14px; }
+
+.task-detail-textarea {
+  line-height: 14px; }
+
+.comment-content {
+  width: 100%;
+  float: right;
+  background-color: #fff;
+  border: 1px solid 	#c1c1c1;
+  border-radius: 2px;
+  box-sizing: border-box;
+  position: relative;
+  min-height: 100px;
+  margin-bottom: 15px; }
+  .comment-content .callout:before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    left: -22px;
+    top: 10px;
+    border: 10px solid transparent;
+    border-right: 12px solid #c1c1c1;
+    /* IE8 Fallback */
+    border-right: 12px solid rgba(193, 193, 193, 0.5);
+    z-index: 2; }
+  .comment-content .callout:after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    left: -20px;
+    top: 10px;
+    border: 10px solid transparent;
+    border-right: 12px solid #F6F8FA;
+    /* IE8 Fallback */
+    z-index: 2; }
+  .comment-content .tab-content {
+    background-color: #F6F8FA;
+    overflow: auto; }
+    .comment-content .tab-content .nav-tabs {
+      margin-top: 10px;
+      padding-left: 10px; }
+      .comment-content .tab-content .nav-tabs .nav-link {
+        color: #333;
+        font-size: 14px; }
+        .comment-content .tab-content .nav-tabs .nav-link:hover {
+          border: 1px solid rgba(0, 0, 0, 0); }
+        .comment-content .tab-content .nav-tabs .nav-link.active:hover {
+          border-color: #dee2e6 #dee2e6 #fff; }
+  .comment-content .tab-output .write-comment {
+    margin: 15px;
+    border: 1px solid #ddd;
+    padding: 5px;
+    border-radius: 3px;
+    background-color: #FAFBFC; }
+    .comment-content .tab-output .write-comment textarea {
+      width: 100%;
+      border: none;
+      min-height: 70px;
+      resize: none;
+      background-color: transparent;
+      font-size: 14px; }
+      .comment-content .tab-output .write-comment textarea:focus {
+        outline: none; }
+    .comment-content .tab-output .write-comment .attach-file {
+      border-top: 1px dotted #ddd;
+      font-size: 12px;
+      color: #aaa;
+      cursor: pointer;
+      padding: 5px;
+      padding-bottom: 0; }
+  .comment-content .comment-button {
+    text-align: right;
+    margin-right: 18px;
+    margin-bottom: 15px; }
+    .comment-content .comment-button button {
+      cursor: pointer;
+      border: 2px solid 	#2B8FCE;
+      color: #2B8FCE;
+      background-color: #fff;
+      padding: 5px 15px;
+      border-radius: 3px;
+      font-size: 14px; }
+      .comment-content .comment-button button.main {
+        background-color: #2B8FCE;
+        border: 2px solid 	#2B8FCE;
+        color: #fff; }
 
 .saving {
   color: #aaa; }
@@ -78,50 +166,6 @@ body {
           float: left; }
           .task-view .task-discussion .log-list .comment .comment-image img {
             width: 100%; }
-        .task-view .task-discussion .log-list .comment .comment-content {
-          width: calc(100% - 80px);
-          float: right;
-          background-color: #fff;
-          border: 1px solid 	#c1c1c1;
-          border-radius: 2px;
-          box-sizing: border-box;
-          position: relative; }
-          .task-view .task-discussion .log-list .comment .comment-content .callout:before {
-            content: "";
-            position: absolute;
-            width: 0;
-            height: 0;
-            left: -22px;
-            top: 10px;
-            border: 10px solid transparent;
-            border-right: 12px solid #c1c1c1;
-            /* IE8 Fallback */
-            border-right: 12px solid rgba(193, 193, 193, 0.5);
-            z-index: 2; }
-          .task-view .task-discussion .log-list .comment .comment-content .callout:after {
-            content: "";
-            position: absolute;
-            width: 0;
-            height: 0;
-            left: -20px;
-            top: 10px;
-            border: 10px solid transparent;
-            border-right: 12px solid #F6F8FA;
-            /* IE8 Fallback */
-            z-index: 2; }
-          .task-view .task-discussion .log-list .comment .comment-content .comment-message {
-            font-size: 14px; }
-            .task-view .task-discussion .log-list .comment .comment-content .comment-message .comment-header {
-              padding: 15px;
-              background-color: #F6F8FA;
-              border-bottom: 1px solid #ddd; }
-              .task-view .task-discussion .log-list .comment .comment-content .comment-message .comment-header .name {
-                font-weight: bold; }
-              .task-view .task-discussion .log-list .comment .comment-content .comment-message .comment-header .action {
-                color: #aaa; }
-            .task-view .task-discussion .log-list .comment .comment-content .comment-message .comment-text {
-              padding: 15px;
-              white-space: pre-wrap; }
     .task-view .task-discussion .comment-action {
       margin-top: 15px;
       overflow: auto; }
@@ -133,88 +177,7 @@ body {
         .task-view .task-discussion .comment-action .comment-image img {
           width: 100%; }
       .task-view .task-discussion .comment-action .comment-content {
-        width: calc(100% - 80px);
-        float: right;
-        background-color: #fff;
-        border: 1px solid 	#c1c1c1;
-        border-radius: 2px;
-        box-sizing: border-box;
-        position: relative;
-        min-height: 100px; }
-        .task-view .task-discussion .comment-action .comment-content .callout:before {
-          content: "";
-          position: absolute;
-          width: 0;
-          height: 0;
-          left: -22px;
-          top: 10px;
-          border: 10px solid transparent;
-          border-right: 12px solid #c1c1c1;
-          /* IE8 Fallback */
-          border-right: 12px solid rgba(193, 193, 193, 0.5);
-          z-index: 2; }
-        .task-view .task-discussion .comment-action .comment-content .callout:after {
-          content: "";
-          position: absolute;
-          width: 0;
-          height: 0;
-          left: -20px;
-          top: 10px;
-          border: 10px solid transparent;
-          border-right: 12px solid #F6F8FA;
-          /* IE8 Fallback */
-          z-index: 2; }
-        .task-view .task-discussion .comment-action .comment-content .tab-content {
-          background-color: #F6F8FA;
-          overflow: auto; }
-          .task-view .task-discussion .comment-action .comment-content .tab-content .nav-tabs {
-            margin-top: 10px;
-            padding-left: 10px; }
-            .task-view .task-discussion .comment-action .comment-content .tab-content .nav-tabs .nav-link {
-              color: #333;
-              font-size: 14px; }
-              .task-view .task-discussion .comment-action .comment-content .tab-content .nav-tabs .nav-link:hover {
-                border: 1px solid rgba(0, 0, 0, 0); }
-              .task-view .task-discussion .comment-action .comment-content .tab-content .nav-tabs .nav-link.active:hover {
-                border-color: #dee2e6 #dee2e6 #fff; }
-        .task-view .task-discussion .comment-action .comment-content .tab-output .write-comment {
-          margin: 15px;
-          border: 1px solid #ddd;
-          padding: 5px;
-          border-radius: 3px;
-          background-color: #FAFBFC; }
-          .task-view .task-discussion .comment-action .comment-content .tab-output .write-comment textarea {
-            width: 100%;
-            border: none;
-            min-height: 70px;
-            resize: none;
-            background-color: transparent;
-            font-size: 14px; }
-            .task-view .task-discussion .comment-action .comment-content .tab-output .write-comment textarea:focus {
-              outline: none; }
-          .task-view .task-discussion .comment-action .comment-content .tab-output .write-comment .attach-file {
-            border-top: 1px dotted #ddd;
-            font-size: 12px;
-            color: #aaa;
-            cursor: pointer;
-            padding: 5px;
-            padding-bottom: 0; }
-        .task-view .task-discussion .comment-action .comment-content .comment-button {
-          text-align: right;
-          margin-right: 18px;
-          margin-bottom: 15px; }
-          .task-view .task-discussion .comment-action .comment-content .comment-button button {
-            cursor: pointer;
-            border: 2px solid 	#2B8FCE;
-            color: #2B8FCE;
-            background-color: #fff;
-            padding: 5px 15px;
-            border-radius: 3px;
-            font-size: 14px; }
-            .task-view .task-discussion .comment-action .comment-content .comment-button button.main {
-              background-color: #2B8FCE;
-              border: 2px solid 	#2B8FCE;
-              color: #fff; }
+        width: calc(100% - 80px); }
   .task-view .task-detail-container {
     min-height: 100px;
     border-right: 1px solid #e9ecef;
