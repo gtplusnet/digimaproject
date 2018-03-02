@@ -63,19 +63,22 @@ class AppController extends Controller
         $total_second_spent         = Tbl_timesheet::where("timesheet_date", date("Y-m-d", strtotime($request->date_filter)))->where("member_id", $request->member_id)->where("second_spent", "!=", 0)->sum("second_spent");
 
         $previous_time_out          = null;
+        $total_break                = 0;
 
         foreach($_timesheet as $key => $timesheet)
         {
             if($previous_time_out == null)
             {
                 $break_span         = "00:00";
+                $total_break        = 0;
             }
             else
             {
-                $datetime1  = new DateTime('2009-10-11 ' . $previous_time_out);
-                $datetime2  = new DateTime('2009-10-11 ' . $timesheet->time_in);
-                $interval   = $datetime1->diff($datetime2);
-                $break_span = $interval->format("%H:%I");
+                $datetime1      = new DateTime('2009-10-11 ' . $previous_time_out);
+                $datetime2      = new DateTime('2009-10-11 ' . $timesheet->time_in);
+                $interval       = $datetime1->diff($datetime2);
+                $break_span     = $interval->format("%H:%I");
+                $total_break    += $interval->format("%s");
 
                 if($break_span != "00:00")
                 {
@@ -93,6 +96,7 @@ class AppController extends Controller
 
         $data["_timesheet"]                     = $__timesheet;
         $data["total_second_spent"]             = Helper::convertSeconds($total_second_spent);
+        $data["total_break"]                    = Helper::convertSeconds($total_break, true);
         return view("app.timesheet_table", $data);
     }
 

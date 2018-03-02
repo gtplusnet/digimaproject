@@ -4,7 +4,7 @@
             <th class="text-center">Time In</th>
             <th class="text-center">Time Out</th>
             <th class="text-center">Task</th>
-            <th class="text-center">Break Span</th>
+            <th class="text-center">Break</th>
             <th class="text-right">Time Spent</th>
         </tr>
     </thead>
@@ -27,7 +27,8 @@
 
         <tfoot>
             <tr>
-                <td colspan="4" class="text-right"></td>
+                <td colspan="3" class="text-right"></td>
+                <td class="text-center"><b>{{ $total_break }}</b></td>
                 <td class="text-right"><b>{{ $total_second_spent }}</b></td>
             </tr>
         </tfoot>

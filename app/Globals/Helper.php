@@ -92,12 +92,21 @@ class Helper
             }
         }
     }
-    public static function convertSeconds($init)
+    public static function convertSeconds($init, $minute_only = false)
     {
         $hours = sprintf("%02d", floor($init / 3600));
         $minutes = sprintf("%02d", floor(($init / 60) % 60));
         $seconds = sprintf("%02d", $init % 60);
-        return "$hours:$minutes:$seconds";
+
+        if($minute_only)
+        {
+            return "$hours:$minutes";
+        }
+        else
+        {
+            return "$hours:$minutes:$seconds";
+        }
+        
     }
     public static function timeUntil($deadline)
     {
