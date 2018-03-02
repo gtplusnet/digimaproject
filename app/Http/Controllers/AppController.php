@@ -158,6 +158,7 @@ class AppController extends Controller
             }
             else
             {
+                $undertime                      = $undertime * -1;
                  $__member[$key]->overtime      = Helper::convertSeconds($undertime);
                  $__member[$key]->undertime       = Helper::convertSeconds(0);
             }
