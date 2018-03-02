@@ -39,6 +39,7 @@ function dashboard()
 		add_event_resume_work();
 		add_event_filter_change();
 		add_event_manage_members();
+		add_event_view_timesheet();
 		add_event_for_markdown_box();
 	}
 
@@ -66,6 +67,10 @@ function dashboard()
 
 	function add_event_for_markdown_box()
 	{
+
+	}
+	function add_event_manage_members()
+	{
 		$(".click-manage-members").click(function()
 		{
 			$(".modal-loader").find(".loading-text").text("Checking Member Status");
@@ -74,9 +79,10 @@ function dashboard()
 			$("#manage_members").find(".modal-content").load("/app/member_list");
 		});
 	}
-	function add_event_manage_members()
+
+	function add_event_view_timesheet()
 	{
-		$(".manage_members")
+		
 	}
 
 	function add_event_filter_change()

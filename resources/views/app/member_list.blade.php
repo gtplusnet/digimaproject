@@ -11,8 +11,6 @@
             <thead style="background-color: #ddd; color: #333; border: none;">
                 <tr>
                     <th class="text-center">Username</th>
-                    <th class="text-center">First Name</th>
-                    <th class="text-center">Last Name</th>
                     <th class="text-center">Last Online</th>
                     <th class="text-center">Today Render</th>
                 </tr>
@@ -21,8 +19,6 @@
                 @foreach($_member as $member)
                 <tr>
                     <td class="text-center"><b>{{ '@' . strtolower($member->username) }}</b></td>
-                    <td class="text-center">{{ $member->first_name }}</td>
-                    <td class="text-center">{{ $member->last_name }}</td>
                     <td class="text-center">{!! $member->last_online !!}</td>
                     <td class="text-center">{!! $member->today_render !!}</td>
                 </tr>

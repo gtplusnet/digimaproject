@@ -32,7 +32,7 @@
                 @endif
                 <div class="button">
                     <button type="button" class="btn btn-primary click-manage-members"><i class="fa fa-address-book"></i> VIEW MEMBERS</button>
-                    <button type="button" class="btn btn-primary click-manage-members"><i class="fa fa-address-book"></i> TIMESHEET</button>
+                    <button type="button" class="btn btn-primary click-view-timesheet"><i class="fa fa-calendar"></i> TIMESHEET</button>
                     <button type="button" class="btn btn-primary refresh-task"><i class="fa fa-sync"></i> REFRESH TASK</button>
                     <button type="button" class="btn btn-primary main add-new-task"><i class="fa fa-plus"></i> ADD NEW TASK</button>
                 </div>
