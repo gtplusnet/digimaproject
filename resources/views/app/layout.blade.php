@@ -31,9 +31,7 @@
                 <div class="text"><i class="fa fa-tasks"></i> ONGOING TASK</div>
                 @endif
                 <div class="button">
-                    @if($session_member->member_admin == 1)
-                        <button type="button" class="btn btn-primary click-manage-members"><i class="fa fa-address-book"></i> MANAGE MEMBERS</button>
-                    @endif
+                    <button type="button" class="btn btn-primary click-manage-members"><i class="fa fa-address-book"></i> VIEW MEMBERS</button>
                     <button type="button" class="btn btn-primary refresh-task"><i class="fa fa-sync"></i> REFRESH TASK</button>
                     <button type="button" class="btn btn-primary main add-new-task"><i class="fa fa-plus"></i> ADD NEW TASK</button>
                 </div>
