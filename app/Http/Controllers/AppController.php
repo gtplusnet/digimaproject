@@ -249,7 +249,7 @@ class AppController extends Controller
         $insert["time_in"]          = Carbon::parse($request->time_in);
         $insert["time_out"]         = Carbon::parse($request->time_out);
         $insert["member_id"]        = $request->member_id;
-        $insert["task_id"]          = 29;
+        $insert["task_id"]          = 1;
         $insert["time_detail"]      = $request->time_detail;
 
         $datetime1                  = new DateTime('2009-10-10 '. $request->time_in);
