@@ -193,8 +193,8 @@ class AppController extends Controller
 
     public function update_time_out(Request $request)
     {
-        $update["last_work_time"]   = Carbon::now();
-        Tbl_member::where("member_id", $this->member->member_id)->update($update);
+        $update_timeout["last_work_time"]   = Carbon::now();
+        Tbl_member::where("member_id", $this->member->member_id)->update($update_timeout);
 
     	$timesheet_id 				= $request->timesheet_id;
     	$timesheet_info 			= Tbl_timesheet::where("timesheet_id", $timesheet_id)->first();
