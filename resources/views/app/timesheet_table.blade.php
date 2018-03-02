@@ -12,8 +12,8 @@
     <tbody>
         @if($session_member->member_admin == 1)
          <tr>
-            <td class="text-center"><input class="form-control text-right" type="time" value="09:00"></td>
-            <td class="text-center"><input class="form-control text-right" type="time" value="18:00"></td>
+            <td class="text-center"><input class="form-control text-center" type="time" value="09:00"></td>
+            <td class="text-center"><input class="form-control text-center" type="time" value="18:00"></td>
             <td class="text-center"></td>
             <td class="text-center"></td>
             <td class="text-center"><input class="form-control text-center" type="text" value="MANUAL ADD"></td>
