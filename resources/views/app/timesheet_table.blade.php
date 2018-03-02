@@ -1,11 +1,10 @@
 <table class="table table-sm">
     <thead style="background-color: #eee; color: #333; border: none;">
         <tr>
-            <th class="text-center" width="120">Time In</th>
-            <th class="text-center" width="120">Time Out</th>
-            <th class="text-center">Break</th>
+            <th class="text-center" width="180">Time In</th>
+            <th class="text-center" width="180">Time Out</th>
             <th class="text-center" width="180">Source</th>
-            <th class="text-center">Time Spent</th>
+            <th class="text-right">Time Spent</th>
         </tr>
     </thead>
     <tbody>
@@ -13,9 +12,8 @@
          <tr>
             <td class="text-center"><input name="time_in" class="form-control text-center" type="text" value="09:00 AM"></td>
             <td class="text-center"><input name="time_out" class="form-control text-center" type="text" value="10:00 AM"></td>
-            <td class="text-center"></td>
             <td class="text-center"><input name="time_detail" class="form-control text-center" type="text" value="MANUALLY ADDED"></td>
-            <td class="text-center"><button type="submit" class="btn btn-primary save-timesheet-button"><i class="fa fa-save"></i></button></td>
+            <td class="text-right"><button type="submit" class="btn btn-primary save-timesheet-button"><i class="fa fa-save"></i></button></td>
         </tr>
         @endif
 
@@ -26,12 +24,11 @@
         @else
 
             @foreach($_timesheet as $timesheet)
-            <tr>
+            <tr style="color: {{ $timesheet->time_detail == 'BREAK' ? 'red' : '' }};" >
                 <td class="text-center">{{ $timesheet->time_in }}</td>
                 <td class="text-center">{{ $timesheet->time_out }}</td>
-                <td class="text-center">{!! $timesheet->break_span !!}</td>
                 <td class="text-center">{{ $timesheet->time_detail }}</td>
-                <td class="text-center">{{ $timesheet->second_spent }}</td>
+                <td class="text-right">{{ $timesheet->second_spent }}</td>
             </tr>
             @endforeach
 
@@ -40,9 +37,14 @@
         <tfoot>
             <tr>
                 <td colspan="2" class="text-right"></td>
-                <td class="text-center" style="color: red;"><b>{{ $total_break }}</b></td>
-                <td class="text-right"></td>
-                <td class="text-center"><b>{{ $total_second_spent }}</b></td>
+                <td class="text-center" ></td>
+                <td class="text-right"><b>Total Work Hours ({{ $total_second_spent }})</b></td>
+            </tr>
+            <tr>
+                <td colspan="2" class="text-right"></td>
+                <td class="text-center" ></td>
+                <td class="text-right" style="color: red;"><b>Total Break ({{ $total_break }}</b>)</td>
+                
             </tr>
         </tfoot>
     </tbody>

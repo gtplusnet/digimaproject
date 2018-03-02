@@ -37,22 +37,24 @@
     {
         $(".form-save-timesheet").submit(function()
         {
-            $(".save-timesheet-button").html("<i class='fa fa-spinner fa-pulse'></i>");
-            $(".save-timesheet-button").attr("disabled", "disabled");
-
-            $.ajax(
+            if(confirm("Are you sure you want to manually add this time?"))
             {
-                url:"/app/manual_time",
-                dataType:"json",
-                data: $(".form-save-timesheet").serialize() ,
-                type:"post",
-                success: function(data)
+                $(".save-timesheet-button").html("<i class='fa fa-spinner fa-pulse'></i>");
+                $(".save-timesheet-button").attr("disabled", "disabled");
+
+                $.ajax(
                 {
-                    load_table_timesheet();
+                    url:"/app/manual_time",
+                    dataType:"json",
+                    data: $(".form-save-timesheet").serialize() ,
+                    type:"post",
+                    success: function(data)
+                    {
+                        load_table_timesheet();
 
-                }
-            });
-
+                    }
+                });
+            }
 
             return false;
         });

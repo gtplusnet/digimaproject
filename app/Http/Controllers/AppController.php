@@ -14,7 +14,7 @@ use App\Tbl_timesheet;
 use App\Tbl_project;
 use App\Tbl_tags;
 use DateTime;
-
+use stdClass;
 class AppController extends Controller
 {
 	public $member;
@@ -64,6 +64,36 @@ class AppController extends Controller
 
         $previous_time_out          = null;
         $total_break                = 0;
+        $ctr                        = 0;
+
+        // foreach($_timesheet as $key => $timesheet)
+        // {
+        //     if($previous_time_out == null)
+        //     {
+        //         $break_span         = "00:00";
+        //         $total_break        = 0;
+        //     }
+        //     else
+        //     {
+        //         $datetime1      = new DateTime('2009-10-11 ' . $previous_time_out);
+        //         $datetime2      = new DateTime('2009-10-11 ' . $timesheet->time_in);
+        //         $interval       = $datetime1->diff($datetime2);
+        //         $break_span     = $interval->format("%H:%I");
+        //         $total_break    += intval($interval->format("%s")) + intval($interval->format("%i")) * 60 + intval($interval->format("%H") * 3600);
+
+        //         if($break_span != "00:00")
+        //         {
+        //             $break_span = "<span style='color: red;'>" . $break_span . "</span>";
+        //         }
+        //     }
+
+        //     $__timesheet[$key]                  = $timesheet;
+        //     $__timesheet[$key]->time_in         = Carbon::parse($timesheet->time_in)->format("h:i A");
+        //     $__timesheet[$key]->time_out        = Carbon::parse($timesheet->time_out)->format("h:i A");
+        //     $__timesheet[$key]->break_span      = $break_span;
+        //     $__timesheet[$key]->second_spent    = Helper::convertSeconds($timesheet->second_spent);
+        //     $previous_time_out                  = $timesheet->time_out;
+        // }
 
         foreach($_timesheet as $key => $timesheet)
         {
@@ -82,16 +112,21 @@ class AppController extends Controller
 
                 if($break_span != "00:00")
                 {
-                    $break_span = "<span style='color: red;'>" . $break_span . "</span>";
+                    $__timesheet[$ctr]                   = new stdClass();
+                    $__timesheet[$ctr]->time_in          = Carbon::parse($previous_time_out)->format("h:i A");
+                    $__timesheet[$ctr]->time_out         = Carbon::parse($timesheet->time_in)->format("h:i A");
+                    $__timesheet[$ctr]->second_spent     = $interval->format("%H:%I:%S");
+                    $__timesheet[$ctr]->time_detail      = "BREAK";
+                    $ctr++;
                 }
             }
 
-            $__timesheet[$key]                  = $timesheet;
-            $__timesheet[$key]->time_in         = Carbon::parse($timesheet->time_in)->format("h:i A");
-            $__timesheet[$key]->time_out        = Carbon::parse($timesheet->time_out)->format("h:i A");
-            $__timesheet[$key]->break_span      = $break_span;
-            $__timesheet[$key]->second_spent    = Helper::convertSeconds($timesheet->second_spent);
+            $__timesheet[$ctr]                  = $timesheet;
+            $__timesheet[$ctr]->time_in         = Carbon::parse($timesheet->time_in)->format("h:i A");
+            $__timesheet[$ctr]->time_out        = Carbon::parse($timesheet->time_out)->format("h:i A");
+            $__timesheet[$ctr]->second_spent    = Helper::convertSeconds($timesheet->second_spent);
             $previous_time_out                  = $timesheet->time_out;
+            $ctr++;
         }
 
         $data["_timesheet"]                     = $__timesheet;
