@@ -116,7 +116,7 @@ class AppController extends Controller
                     $__timesheet[$ctr]->time_in          = Carbon::parse($previous_time_out)->format("h:i A");
                     $__timesheet[$ctr]->time_out         = Carbon::parse($timesheet->time_in)->format("h:i A");
                     $__timesheet[$ctr]->second_spent     = $interval->format("%H:%I:%S");
-                    $__timesheet[$ctr]->time_detail      = "BREAK";
+                    $__timesheet[$ctr]->time_detail      = "BREAK / IDLE";
                     $ctr++;
                 }
             }

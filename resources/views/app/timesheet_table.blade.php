@@ -24,7 +24,7 @@
         @else
 
             @foreach($_timesheet as $timesheet)
-            <tr style="color: {{ $timesheet->time_detail == 'BREAK' ? 'red' : '' }};" >
+            <tr style="color: {{ $timesheet->time_detail == 'BREAK / IDLE' ? 'red' : '' }};" >
                 <td class="text-center">{{ $timesheet->time_in }}</td>
                 <td class="text-center">{{ $timesheet->time_out }}</td>
                 <td class="text-center">{{ $timesheet->time_detail }}</td>
