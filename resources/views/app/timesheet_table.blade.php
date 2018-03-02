@@ -29,7 +29,7 @@
             <tr>
                 <td colspan="3" class="text-right"></td>
                 <td class="text-center"><b>{{ $total_break }}</b></td>
-                <td class="text-right"><b>{{ $total_second_spent }}</b></td>
+                <td class="text-right" style="color: red;"><b>{{ $total_second_spent }}</b></td>
             </tr>
         </tfoot>
     </tbody>
