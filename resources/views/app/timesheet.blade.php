@@ -11,7 +11,7 @@
             <div class="col-md-4">
                 <select class="form-control choose-member-timesheet">
                     @foreach($_member as $member)
-                    <option {{ $session_member->member_id = $member->member_id ? 'selected' : '' }} value="{{ $member->member_id }}">{{ $member->first_name }} {{ $member->last_name }}</option>
+                    <option {{ $session_member->member_id == $member->member_id ? 'selected' : '' }} value="{{ $member->member_id }}">{{ $member->first_name }} {{ $member->last_name }}</option>
                     @endforeach
                 </select>
             </div>
