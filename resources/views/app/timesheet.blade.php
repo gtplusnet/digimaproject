@@ -1,4 +1,4 @@
-<form class="form-task-add">
+<form method="post" class="form-save-timesheet">
     {{ csrf_field() }}
     <div class="modal-header">
         <h5 class="modal-title"><i class="fa fa-address-book"></i> Members</h5>
@@ -9,7 +9,7 @@
     <div class="modal-body">
         <div class="row">
             <div class="col-md-4">
-                <select class="form-control choose-member-timesheet">
+                <select name="member_id" class="form-control choose-member-timesheet">
                     @foreach($_member as $member)
                     <option {{ $session_member->member_id == $member->member_id ? 'selected' : '' }} value="{{ $member->member_id }}">{{ $member->first_name }} {{ $member->last_name }}</option>
                     @endforeach
@@ -18,7 +18,7 @@
             <div class="col-md-4">
             </div>
             <div class="col-md-4" style="margin-bottom: 10px;">
-                <input class="form-control text-center date-picker choose-timesheet-date" type="text" value="{{ date('m/d/Y') }}">
+                <input name="timesheet_date" class="form-control text-center date-picker choose-timesheet-date" type="text" value="{{ date('m/d/Y') }}">
             </div>
 
             <div class="col-md-12 load-table-timesheet">
@@ -31,6 +31,32 @@
 <script type="text/javascript">
     load_table_timesheet();
     event_change_date();
+    event_save_manual_time();
+
+    function event_save_manual_time()
+    {
+        $(".form-save-timesheet").submit(function()
+        {
+            $(".save-timesheet-button").html("<i class='fa fa-spinner fa-pulse'></i>");
+            $(".save-timesheet-button").attr("disabled", "disabled");
+
+            $.ajax(
+            {
+                url:"/app/manual_time",
+                dataType:"json",
+                data: $(".form-save-timesheet").serialize() ,
+                type:"post",
+                success: function(data)
+                {
+                    load_table_timesheet();
+
+                }
+            });
+
+
+            return false;
+        });
+    } 
 
     function event_change_date()
     {

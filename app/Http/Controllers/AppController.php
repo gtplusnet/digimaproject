@@ -59,7 +59,7 @@ class AppController extends Controller
     {
         $data["page"]               = "Timesheet";
         $__timesheet                = null;
-        $_timesheet                 = Tbl_timesheet::where("timesheet_date", date("Y-m-d", strtotime($request->date_filter)))->where("member_id", $request->member_id)->where("second_spent", "!=", 0)->get();
+        $_timesheet                 = Tbl_timesheet::where("timesheet_date", date("Y-m-d", strtotime($request->date_filter)))->where("member_id", $request->member_id)->where("second_spent", "!=", 0)->orderBy("time_in", "asc")->get();
         $total_second_spent         = Tbl_timesheet::where("timesheet_date", date("Y-m-d", strtotime($request->date_filter)))->where("member_id", $request->member_id)->where("second_spent", "!=", 0)->sum("second_spent");
 
         $previous_time_out          = null;
@@ -241,6 +241,28 @@ class AppController extends Controller
     	Tbl_member::where("member_id", $this->member->member_id)->update($update);
 
     	echo json_encode("success");
+    }
+
+    public function manual_time(Request $request)
+    {
+        $insert["timesheet_date"]   = Carbon::parse($request->timesheet_date);
+        $insert["time_in"]          = Carbon::parse($request->time_in);
+        $insert["time_out"]         = Carbon::parse($request->time_out);
+        $insert["member_id"]        = $request->member_id;
+        $insert["task_id"]          = 29;
+        $insert["time_detail"]      = $request->time_detail;
+
+        $datetime1                  = new DateTime('2009-10-10 '. $request->time_in);
+        $datetime2                  = new DateTime('2009-10-10' . $request->time_out);
+        $interval                   = $datetime1->diff($datetime2);
+        $hours                      = intval($interval->format("%h")) * 3600;
+        $minutes                    = intval($interval->format("%i")) * 60;
+        $seconds                    = intval($interval->format("%s"));
+        $insert["second_spent"]     = $hours + $minutes + $seconds;
+
+        $timesheet_id               = Tbl_timesheet::insertGetId($insert);
+
+        echo json_encode($timesheet_id);
     }
 
     public function update_time_out(Request $request)
