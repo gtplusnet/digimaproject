@@ -139,7 +139,7 @@ class AppController extends Controller
     {
         $data["page"]       = "Member List";
         $__member           = null;
-        $_member            = Tbl_member::orderBy("last_work_time", "desc")->where("member_admin", 0)->get();
+        $_member            = Tbl_member::orderBy("last_work_time", "desc")->get();
 
         foreach($_member as $key => $member)
         {
