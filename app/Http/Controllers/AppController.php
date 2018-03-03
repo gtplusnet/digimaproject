@@ -168,7 +168,6 @@ class AppController extends Controller
             $_task->where("task_title", "LIKE", "%" . $request->search . "%");
         }
 
-
         $_task              = $_task->get();
 
     	foreach($_task as $key => $task)
@@ -204,24 +203,31 @@ class AppController extends Controller
     {
     	/* INSERT TASK */
     	$insert_task["task_title"] 			= $request->task_title;
-    	$insert_task["task_detail"] 		= $request->task_detail;
+    	$insert_task["task_detail"] 		= ($request->task_detail == "" ? "" : $request->task_detail);
     	$insert_task["task_deadline"] 		= Carbon::parse($request->deadline . $request->deadline_time)->format("Y-m-d H:i:s");
     	$insert_task["task_project"] 		= $request->task_project;
     	$insert_task["task_assigned_by"]	= $this->member->member_id;
     	$task_id = Tbl_task::insertGetId($insert_task);
 
-    	/* INSERT TASK ASSIGNEE */
-    	$insert_assignee["task_id"] 			= $task_id;
-    	$insert_assignee["task_assigned_to"] 	= $this->member->member_id;
-    	Tbl_task_assignee::insert($insert_assignee);
+        /* INSERT TASK TAGS */
+        if($request->assignee)
+        {
+            foreach($request->assignee as $key => $assignee_id)
+            {
+                $insert_assignee[$key]["task_id"]             = $task_id;
+                $insert_assignee[$key]["task_assigned_to"]    = $assignee_id;
+            }
+
+            Tbl_task_assignee::insert($insert_assignee);
+        }
 
     	/* INSERT TASK TAGS */
-    	if($request->_tag)
+    	if($request->tags)
     	{
-	    	foreach($request->_tag as $key => $tags)
+	    	foreach($request->tags as $key => $tag_id)
 	    	{
 	    		$insert_tags[$key]["task_id"] 	= $task_id;
-	    		$insert_tags[$key]["tag_id"] 	= $key;
+	    		$insert_tags[$key]["tag_id"] 	= $tag_id;
 	    	}
 
 	    	Tbl_task_tags::insert($insert_tags);

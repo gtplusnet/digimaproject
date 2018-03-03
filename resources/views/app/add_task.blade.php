@@ -92,7 +92,7 @@
             <div class="col-md-8">
                 <div class="form-group">
                     <label>Assignee</label>
-                    <select multiple data-placeholder="Select assignee" class="multipleSelect form-control chosen-select" name="assignee">
+                    <select name="assignee[]" multiple data-placeholder="Select assignee" class="multipleSelect form-control chosen-select" >
                         @foreach($_member as $member)
                         <option value="{{ $member->member_id }}" {{ $session_member->member_id == $member->member_id ? 'selected' : '' }}>{{ $member->username }}</option>
                         @endforeach
@@ -103,7 +103,7 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <label>Quality Checker</label>
-                    <select class="form-control chosen-select">
+                    <select name="quality_checker" class="form-control chosen-select">
                         @foreach($_member as $member)
                             @if($member->member_admin == 1)
                                 <option value="{{ $member->member_id }}" {{ $session_member->member_id == $member->member_id ? 'selected' : '' }}>{{ $member->username }}</option>
@@ -116,7 +116,7 @@
              <div class="col-md-12">
                 <div class="form-group">
                     <label>Tags</label>
-                    <select multiple data-placeholder="Select tags" class="multipleSelect form-control chosen-select" name="assignee">
+                    <select name="tags[]" multiple data-placeholder="Select tags" class="multipleSelect form-control chosen-select">
                         @foreach($_tags as $tag)
                         <option value="{{ $tag->tag_id }}">{{ $tag->tag_label }}</option>
                         @endforeach

@@ -43,7 +43,6 @@ function dashboard()
 			$(".timer-counter").hide();
 		}
 	
-
 		add_chosen_select();
 		add_event_refresh_task();
 		add_event_new_task_clicked();
