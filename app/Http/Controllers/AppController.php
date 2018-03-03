@@ -176,6 +176,7 @@ class AppController extends Controller
     		$__task[$key]->deadline 		= Helper::timeUntil($task->task_deadline);
     		$__task[$key]->tags 			= Tags::get($task->task_id);
     		$__task[$key]->working 			= $this->member->member_task == $task->task_id ? true : false;
+            $__task[$key]->assignee             = Self::parseAssigneeList($task->task_id);
     	}
 
     	$data["_task"] 		= $__task;
@@ -188,7 +189,29 @@ class AppController extends Controller
         {
             return view("app.task_table", $data);
         }
+    }
 
+    public static function parseAssigneeList($task_id)
+    {
+        $_assignee = Tbl_task_assignee::where("task_id", $task_id)->member()->get();
+
+        $__assignee = null;
+
+        foreach($_assignee as $key => $assignee)
+        {
+            $__assignee[$key] = $assignee->username;
+        }
+
+        if($__assignee)
+        {
+            return implode(", ", $__assignee);
+        }
+        else
+        {
+            return "NO ASSIGNEE";
+        }
+
+        
     }
 
 

@@ -19,7 +19,7 @@
                     <td>{{ strtoupper($task->project_name) }}</td>
                     <td>{{ $task->task_title }}</td>
                     <td class="text-center">{!! $task->tags !!}</td>
-                    <td class="text-center">ASSIGNEE</td>
+                    <td class="text-center">{!! $task->assignee !!}</td>
                     <td class="text-center">{!! $task->deadline !!}</td>
                     <td class="text-center">
                         @if($task->working)
