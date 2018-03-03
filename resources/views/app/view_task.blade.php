@@ -14,7 +14,7 @@
                     <span class="deadline">Deadline ends in <strong>{!! $task->deadline !!}</strong></span>
                 </div>
 
-                <div class="task-detail">{!! $task->task_detail !!}</div>
+                <div class="task-detail preview-comment-container">{!! $task->task_detail !!}</div>
             </div>
         </div>
 
@@ -99,25 +99,31 @@
                         <div class="tab-content">
                             <ul class="nav nav-tabs">
                                 <li class="nav-item">
-                                    <a class="nav-link active" href="#">Write</a>
+                                    <a class="nav-link active markdown-change-tab" target="write-comment">Write</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">Preview</a>
+                                    <a class="nav-link markdown-write-mode markdown-change-tab" target="preview-comment">Preview</a>
                                 </li>
                             </ul>
                         </div>
-
                         <div class="tab-output">
-                            <div class="write-comment">
-                                <textarea placeholder="Leave a comment..."></textarea>
+                            <!-- WRITE COMMENT -->
+                            <div class="comment-tab write-comment">
+                                <textarea name="task_detail" class="write-comment-textarea" placeholder="Task Details"></textarea>
                                 <div class="attach-file"><i class="fa fa-paperclip"></i> Attach files by clicking here.</div>
                             </div>
+                            <!-- PREVIEW TAB -->
+                            <div class="comment-tab preview-comment" style="display: none;">
+                                <div class="preview-comment-container">
+                                    Nothing to preview
+                                </div>
+                            </div>
                         </div>
-                        <div class="comment-button">
-                            <button><i class="fa fa-check"></i> Submit for Review</button>
-                            <button class="main"><i class="fa fa-comment"></i> Post Comment</button>
-                        </div>
-                    </div>
+                            <div class="comment-button">
+                                <button><i class="fa fa-check"></i> Submit for Review</button>
+                                <button class="main"><i class="fa fa-comment"></i> Post Comment</button>
+                            </div>
+                    </div> 
                 </div>
             </div>
         </div>

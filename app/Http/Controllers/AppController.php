@@ -66,35 +66,6 @@ class AppController extends Controller
         $total_break                = 0;
         $ctr                        = 0;
 
-        // foreach($_timesheet as $key => $timesheet)
-        // {
-        //     if($previous_time_out == null)
-        //     {
-        //         $break_span         = "00:00";
-        //         $total_break        = 0;
-        //     }
-        //     else
-        //     {
-        //         $datetime1      = new DateTime('2009-10-11 ' . $previous_time_out);
-        //         $datetime2      = new DateTime('2009-10-11 ' . $timesheet->time_in);
-        //         $interval       = $datetime1->diff($datetime2);
-        //         $break_span     = $interval->format("%H:%I");
-        //         $total_break    += intval($interval->format("%s")) + intval($interval->format("%i")) * 60 + intval($interval->format("%H") * 3600);
-
-        //         if($break_span != "00:00")
-        //         {
-        //             $break_span = "<span style='color: red;'>" . $break_span . "</span>";
-        //         }
-        //     }
-
-        //     $__timesheet[$key]                  = $timesheet;
-        //     $__timesheet[$key]->time_in         = Carbon::parse($timesheet->time_in)->format("h:i A");
-        //     $__timesheet[$key]->time_out        = Carbon::parse($timesheet->time_out)->format("h:i A");
-        //     $__timesheet[$key]->break_span      = $break_span;
-        //     $__timesheet[$key]->second_spent    = Helper::convertSeconds($timesheet->second_spent);
-        //     $previous_time_out                  = $timesheet->time_out;
-        // }
-
         foreach($_timesheet as $key => $timesheet)
         {
             if($previous_time_out == null)
@@ -231,7 +202,7 @@ class AppController extends Controller
     {
     	/* INSERT TASK */
     	$insert_task["task_title"] 			= $request->task_title;
-    	$insert_task["task_detail"] 		= "";
+    	$insert_task["task_detail"] 		= $request->task_detail;
     	$insert_task["task_deadline"] 		= Carbon::parse($request->deadline . $request->deadline_time)->format("Y-m-d H:i:s");
     	$insert_task["task_project"] 		= $request->task_project;
     	$insert_task["task_assigned_by"]	= $this->member->member_id;

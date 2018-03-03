@@ -6,7 +6,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-        <link rel="stylesheet" href="/css/app_layout.css ">
+        <link rel="stylesheet" href="/css/app_layout.css?v=2.2">
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
     </head>
@@ -105,9 +105,12 @@
                 <div class="loading-text">Loading Form</div>
             </div>
         </div>
+
         <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
         <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
-        <script type="text/javascript" src="/js/dashboard.js?v=1.2"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script type="text/javascript" src= "https://cdnjs.cloudflare.com/ajax/libs/showdown/1.8.6/showdown.min.js"></script>
+        <script type="text/javascript" src="/js/jquery.autogrowtextarea.js"></script>
+        <script type="text/javascript" src="/js/dashboard.js?v=2.2"></script>
     </body>
 </html>

@@ -8,8 +8,6 @@
         </tr>
     </thead>
     <tbody>
-
-
         @if(!$_timesheet)
             <tr>
                 <td colspan="6" class="text-center">NO RECORD FOUND</td>

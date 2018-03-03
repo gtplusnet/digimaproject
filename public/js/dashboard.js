@@ -9,6 +9,8 @@ var idle_allowed = 0;
 var current_task = 0;
 var ajax_task_data = {};
 
+var converter = new showdown.Converter();
+
 function idle_from_csharp(idlex_time)
 {
 	idle_time = parseInt(idlex_time / 1000);
@@ -18,6 +20,8 @@ function idle_from_csharp(idlex_time)
 function dashboard()
 {
 	init();
+
+
 
 	function init()
 	{
@@ -65,9 +69,44 @@ function dashboard()
 		});
 	}
 
+	function actionAppTopMost($topmost)
+	{
+		if($topmost)
+		{
+			if ('topMostTrue' in window.external)
+			{
+				window.external.topMostTrue();
+			}
+			
+		}
+		else
+		{
+			if ('topMostFalse' in window.external)
+			{
+				window.external.topMostFalse();
+			}
+		}
+	}
+
 	function add_event_for_markdown_box()
 	{
+		$("body").on("click", ".markdown-change-tab", function(e)
+		{
+			$tab_class = $(e.currentTarget).attr("target");
+			$(".markdown-change-tab").removeClass("active");
+			$(e.currentTarget).addClass("active");
+			$(e.currentTarget).closest(".comment-content").find(".tab-output").find(".comment-tab").hide();
+			$(e.currentTarget).closest(".comment-content").find(".tab-output").find("." + $tab_class).show();
 
+			$text = $(e.currentTarget).closest(".comment-content").find(".tab-output").find(".write-comment-textarea").val();
+
+			if($text.trim() == "")
+			{
+				$text = "*Nothing to preview*";
+			}
+
+			$(e.currentTarget).closest(".comment-content").find(".tab-output").find(".preview-comment-container").html(converter.makeHtml($text));
+		});
 	}
 	function add_event_manage_members()
 	{
@@ -98,7 +137,7 @@ function dashboard()
 			dashboard.action_load_ongoing_task_list();
 		});
 
-		$(".filter-project").change(function()
+		$(".filter-oject").change(function()
 		{
 			dashboard.action_load_ongoing_task_list();
 		});
@@ -124,7 +163,7 @@ function dashboard()
 			idle = false;
 			$(".idle-cover").hide();
 			action_timein(current_task);
-			window.external.topMostFalse();
+			actionAppTopMost(false);
 		});
 	}
 
@@ -244,7 +283,7 @@ function dashboard()
 	{
 		if(idle_time > idle_allowed && idle == false && active_timesheet)
 		{
-			window.external.topMostTrue();
+			actionAppTopMost(true);
 			idle = true;
 			$(".idle-cover").show();
 			action_timeout();
@@ -253,12 +292,12 @@ function dashboard()
 		if(!active_timesheet)
 		{
 			action_update_status_helper("<b>Time is NOT running.</b> You can start working by choosing a task. ", "red", "#fff");
-			window.external.topMostTrue();
+			actionAppTopMost(true);
 		}
 		else
 		{
 			action_update_status_helper("<b>Time is now running.</b> You can now proceed with your work.", "green", "#fff");
-			window.external.topMostFalse();
+			actionAppTopMost(false);
 		}
 
 		action_update_display_time();
@@ -383,9 +422,22 @@ function dashboard()
 				{
 					$(".modal-loader").find(".loading-text").text("Loading Task Information");
 					$("#view_task").find(".modal-content").html(data);
+					add_event_for_view_task();
 				}
 			});
 		});
+	}
+
+	function add_event_for_view_task()
+	{
+		if($(".task-detail-container").find(".no-detail").length == 0)
+		{
+			$text = $(".task-detail-container").find(".task-detail").text();
+			$html = converter.makeHtml($text);
+			$(".task-detail-container").find(".task-detail").html($html);
+		}
+
+		$(".write-comment-textarea").autoGrow();
 	}
 
 	function html_modal_loading()
