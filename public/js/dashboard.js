@@ -21,8 +21,6 @@ function dashboard()
 {
 	init();
 
-
-
 	function init()
 	{
 		$(document).ready(function()
@@ -34,7 +32,19 @@ function dashboard()
 	function document_ready()
 	{
 		dashboard.action_load_ongoing_task_list();
-		action_initialize_timer();
+
+		if ('topMostTrue' in window.external)
+		{
+			action_initialize_timer();
+		}
+		else
+		{
+			$(".status-helper").fadeOut();
+			$(".timer-counter").hide();
+		}
+	
+
+		add_chosen_select();
 		add_event_refresh_task();
 		add_event_new_task_clicked();
 		add_event_view_task_clicked();
@@ -45,6 +55,11 @@ function dashboard()
 		add_event_manage_members();
 		add_event_view_timesheet();
 		add_event_for_markdown_box();
+	}
+
+	function add_chosen_select()
+	{
+    	$(".chosen-select").chosen();
 	}
 
 	this.action_load_ongoing_task_list = function()
@@ -438,6 +453,15 @@ function dashboard()
 		}
 
 		$(".write-comment-textarea").autoGrow();
+
+		if ('topMostTrue' in window.external)
+		{
+		}
+		else
+		{
+			$(".stop-working").hide();
+			$(".start-working").hide();
+		}
 	}
 
 	function html_modal_loading()

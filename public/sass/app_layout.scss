@@ -40,6 +40,38 @@ body
 	line-height: 14px;
 }
 
+.chosen-container
+{
+	font-size: 14px !important;
+
+	.chosen-choices
+	{
+		padding: 4px 10px !important;
+		border-radius: 3px;
+		border: 1px solid #ccc !important;
+	}
+
+	.chosen-single
+	{
+		border-radius: 3px;
+		border: 1px solid #ccc !important;
+		padding: 4px 10px !important;
+		height: 38px !important;
+
+		.chosen-search-input
+		{
+			padding: 4px 10px !important;
+		}
+		span
+		{
+			padding-top: 3px;
+		}
+		div
+		{
+			padding-top: 5px;
+		}
+	}
+}
 
 .form-task-add
 {
@@ -518,8 +550,10 @@ input[type=text]
 	}
 	.task-filters
 	{
-		margin-bottom: 	5px;
+		margin-bottom: 	10px;
 		font-size: 		14px;
+		text-align: 	left;
+
 	}
 	.table
 	{

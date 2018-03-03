@@ -15,7 +15,7 @@ class Tags
 
             foreach($_tags as $tag)
             {
-                $return .= "<span class='tags' style='color: #" . $tag->tag_forecolor . "; background-color: " .  $tag->tag_backcolor . ";'>" . $tag->tag_label . "</span> ";
+                $return .= "<span class='tags' style='color: " . $tag->tag_forecolor . "; background-color: " .  $tag->tag_backcolor . ";'>" . $tag->tag_label . "</span> ";
             }
 
             return $return;

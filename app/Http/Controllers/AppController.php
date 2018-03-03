@@ -45,6 +45,7 @@ class AppController extends Controller
         $data["_member"]            = Tbl_member::get();
         $data["_project"]           = Tbl_project::get();
         $data["_tags"]              = Tbl_tags::get();
+
         return view("app.dashboard", $data);
     }
 
@@ -196,6 +197,7 @@ class AppController extends Controller
     {
     	$data["_project"] 	= Tbl_project::get();
     	$data["_tags"] 		= Tbl_tags::get();
+        $data["_member"]    = Tbl_member::get();
     	return view("app.add_task", $data);
     }
     public function add_task_submit(Request $request)

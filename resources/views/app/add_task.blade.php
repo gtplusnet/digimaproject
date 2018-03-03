@@ -45,7 +45,8 @@
 
             <div class="col-md-4">
                 <div class="form-group">
-                    <select name="task_project" class="form-control" id="exampleFormControlSelect1">
+                    <label>Project</label>
+                    <select name="task_project" class="form-control chosen-select">
                         @foreach($_project as $project)
                         <option value="{{ $project->project_id }}">{{ $project->project_name }}</option>
                         @endforeach
@@ -55,6 +56,7 @@
 
             <div class="col-md-4">
                 <div class="form-group">
+                    <label>Deadline Date</label>
                     <input class="date-picker form-control" required name="deadline" type="text" value="{{ date('m/d/Y') }}">
                 </div>
             </div>
@@ -62,6 +64,7 @@
             <div class="col-md-4">
                
                 <div class="form-group">
+                    <label>Deadline Time</label>
                     <select name="deadline_time" class="form-control">
                         <option>06:00 AM</option>
                         <option>07:00 AM</option>
@@ -86,24 +89,40 @@
                 </div>
             </div>
 
-            <div class="col-md-12">
-                <label>Tags</label>
-                <div class="row">
-                    <div style="margin-left: 20px;">
-                        @foreach($_tags as $tag)
-                        <div style="display: inline-block; margin-right: 10px;">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="_tag[{{ $tag->tag_id }}]" id="tag_{{ $tag->tag_id }}">
-                                <label class="form-check-label" for="tag_{{ $tag->tag_id }}">
-                                    <div>{{ $tag->tag_label }}</div>
-                                </label>
-                            </div>
-                        </div>
+            <div class="col-md-8">
+                <div class="form-group">
+                    <label>Assignee</label>
+                    <select multiple data-placeholder="Select assignee" class="multipleSelect form-control chosen-select" name="assignee">
+                        @foreach($_member as $member)
+                        <option value="{{ $member->member_id }}" {{ $session_member->member_id == $member->member_id ? 'selected' : '' }}>{{ $member->username }}</option>
                         @endforeach
-                    </div>
+                    </select>
                 </div>
             </div>
 
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Quality Checker</label>
+                    <select class="form-control chosen-select">
+                        @foreach($_member as $member)
+                            @if($member->member_admin == 1)
+                                <option value="{{ $member->member_id }}" {{ $session_member->member_id == $member->member_id ? 'selected' : '' }}>{{ $member->username }}</option>
+                            @endif
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+
+             <div class="col-md-12">
+                <div class="form-group">
+                    <label>Tags</label>
+                    <select multiple data-placeholder="Select tags" class="multipleSelect form-control chosen-select" name="assignee">
+                        @foreach($_tags as $tag)
+                        <option value="{{ $tag->tag_id }}">{{ $tag->tag_label }}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
         </div>
     </div>
     <div class="modal-footer">
@@ -141,4 +160,5 @@
 
     $(".write-comment-textarea").autoGrow();
     $(".date-picker").datepicker();
+    $(".chosen-select").chosen();
 </script>

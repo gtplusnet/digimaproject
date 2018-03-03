@@ -7,6 +7,7 @@
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="/css/app_layout.css?v=2.2">
+        <link rel="stylesheet" href="/external/chosen/chosen.min.css">
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
     </head>
@@ -14,7 +15,9 @@
         <div class="idle-cover" style="display: none;">
             <button class="btn btn-danger resume-work"><strong><i class="fa fa-exclamation-triangle"></i> You were tagged as IDLE.</strong><br>Click HERE to resume work now.<br></button>
         </div>
-        <div class="status-helper"></div>
+        <div class="status-helper" style="background-color: red;">
+            <i class="fa fa-spinner fa-pulse"></i> Connecting to <b>Digima Network</b>
+        </div>
         <div class="timer-counter" idle_allowed="{{ $session_member->member_idle_allowed }}" current_task="{{ $session_member->member_task }}" time_spent_today="{{ $time_spent_today }}" hours="{{ date('H') }}" minutes="{{ date('i') }}" seconds="{{ date('s') }}">
             <div class="timer-countdown-label">TIME SPENT TODAY</div>
             <div class="timer-countdown">00:00:00</div>
@@ -25,7 +28,7 @@
         </div>
         <div class="task-container">
             <div class="title">
-                @if($session_member->member_admin == 1)
+                @if($session_member->member_qa == 1)
                 <div class="text"><i class="fa fa-tasks"></i> TASK LIST</div>
                 @else
                 <div class="text"><i class="fa fa-tasks"></i> ONGOING TASK</div>
@@ -38,9 +41,9 @@
                 </div>
             </div> 
             <div class="task-filters">
-                <div class="row no-gutters">
+                <div class="row">
                     <div class="col-md-3">
-                        <select class="form-control filter-assignee">
+                        <select class="chosen-select form-control filter-assignee">
                             <option value="0">All Employee</option>
                             @foreach($_member as $member)
                             <option {{ $member->member_id == $session_member->member_id ? 'selected' : '' }} value="{{ $member->member_id }}">{{ $member->first_name }} {{ $member->last_name }}</option>
@@ -48,7 +51,7 @@
                         </select>
                     </div>
                     <div class="col-md-2" style="padding-left: 5px;">
-                        <select class="form-control filter-project">
+                        <select class="chosen-select form-control filter-project">
                             <option value="0">All Project</option>
                             @foreach($_project as $project)
                             <option value="{{ $project->project_id }}">{{ $project->project_name }}</option>
@@ -56,7 +59,7 @@
                         </select>
                     </div>
                     <div class="col-md-2" style="padding-left: 5px;">
-                        <select class="form-control filter-tags">
+                        <select class="chosen-select form-control filter-tags">
                             <option value="0">All Tags</option>
                             @foreach($_tags as $tags)
                             <option value="{{ $tags->tag_id }}">{{ ucfirst($tags->tag_label) }}</option>
@@ -111,6 +114,7 @@
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <script type="text/javascript" src= "https://cdnjs.cloudflare.com/ajax/libs/showdown/1.8.6/showdown.min.js"></script>
         <script type="text/javascript" src="/js/jquery.autogrowtextarea.js"></script>
+        <script type="text/javascript" src="/external/chosen/chosen.jquery.min.js"></script>
         <script type="text/javascript" src="/js/dashboard.js?v=2.2"></script>
     </body>
 </html>
