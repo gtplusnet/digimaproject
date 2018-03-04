@@ -67,7 +67,8 @@ function dashboard()
 		$(".load-table-ongoing-task-list").html(html_modal_loading());
 
 		ajax_task_data.assignee 	= $(".filter-assignee").val();
-		ajax_task_data.project 		= $(".filter-project").val();
+		ajax_task_data.project 		= $(".filter-project").val()
+		ajax_task_data.status 		= $(".filter-status").val();;
 		ajax_task_data.tags 		= $(".filter-tags").val();
 		ajax_task_data.search 		= $(".task-search").val();
 
@@ -147,6 +148,11 @@ function dashboard()
 	function add_event_filter_change()
 	{
 		$(".filter-assignee").change(function()
+		{
+			dashboard.action_load_ongoing_task_list();
+		});
+
+		$(".filter-status").change(function()
 		{
 			dashboard.action_load_ongoing_task_list();
 		});
@@ -461,6 +467,35 @@ function dashboard()
 			$(".stop-working").hide();
 			$(".start-working").hide();
 		}
+
+		$(".submit-for-review").click(function(e)
+		{
+			$task_id = $(e.currentTarget).attr("task_id");
+
+			$(e.currentTarget).hide();
+			$(".start-working-loading").show();
+
+			var ajax_submit_update_status 			= {};
+			ajax_submit_update_status.task_id 		= $task_id;
+			ajax_submit_update_status.task_status 	= "review"; 
+
+			if($task_id == current_task)
+			{
+				action_timeout();
+			}
+
+			$.ajax(
+			{
+				url:"/app/update_task_status",
+				dataType:"json",
+				data: ajax_submit_update_status,
+				type: "get",
+				success: function(data)
+				{
+					
+				}
+			});
+		});
 	}
 
 	function html_modal_loading()

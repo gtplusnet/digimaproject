@@ -28,12 +28,11 @@
         </div>
         <div class="task-container">
             <div class="title">
-                @if($session_member->member_qa == 1)
                 <div class="text"><i class="fa fa-tasks"></i> TASK LIST</div>
-                @else
-                <div class="text"><i class="fa fa-tasks"></i> ONGOING TASK</div>
-                @endif
                 <div class="button">
+                    @if($session_member->member_qa == 1)
+                        <button type="button" class="btn btn-primary click-manage-members"><i class="fa fa-check"></i> REVIEW TASK (0)</button>
+                    @endif
                     <button type="button" class="btn btn-primary click-manage-members"><i class="fa fa-address-book"></i> VIEW MEMBERS</button>
                     <button type="button" class="btn btn-primary click-view-timesheet"><i class="fa fa-calendar"></i> TIMESHEET</button>
                     <button type="button" class="btn btn-primary refresh-task"><i class="fa fa-sync"></i> REFRESH TASK</button>
@@ -42,7 +41,7 @@
             </div> 
             <div class="task-filters">
                 <div class="row">
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                         <select class="chosen-select form-control filter-assignee">
                             <option value="0">All Employee</option>
                             @foreach($_member as $member)
@@ -66,7 +65,14 @@
                             @endforeach
                         </select>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-2" style="padding-left: 5px;">
+                        <select class="chosen-select form-control filter-status">
+                            <option selected value="pending">Pending</option>
+                            <option value="review">Under Review</option>
+                            <option value="done">Done</option>
+                        </select>
+                    </div>
+                    <div class="col-md-1">
                     </div>
                     <div class="col-md-3">
                         <input type="text" class="form-control task-search" placeholder="Search title of task...">
@@ -115,6 +121,6 @@
         <script type="text/javascript" src= "https://cdnjs.cloudflare.com/ajax/libs/showdown/1.8.6/showdown.min.js"></script>
         <script type="text/javascript" src="/js/jquery.autogrowtextarea.js"></script>
         <script type="text/javascript" src="/external/chosen/chosen.jquery.min.js"></script>
-        <script type="text/javascript" src="/js/dashboard.js?v=2.2"></script>
+        <script type="text/javascript" src="/js/dashboard.js?v=2.3"></script>
     </body>
 </html>

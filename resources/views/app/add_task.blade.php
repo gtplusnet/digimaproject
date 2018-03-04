@@ -102,8 +102,9 @@
 
             <div class="col-md-4">
                 <div class="form-group">
-                    <label>Quality Checker</label>
-                    <select name="quality_checker" class="form-control chosen-select">
+                    <label>Quality Assurance</label>
+                    <select name="reviewee" class="form-control chosen-select">
+                        <option value="0">-- none -- </option>
                         @foreach($_member as $member)
                             @if($member->member_admin == 1)
                                 <option value="{{ $member->member_id }}" {{ $session_member->member_id == $member->member_id ? 'selected' : '' }}>{{ $member->username }}</option>

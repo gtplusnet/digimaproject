@@ -22,6 +22,7 @@ Route::get('/app/task_table', 'AppController@task_table');
 Route::get('/app/view_task/{id}', 'AppController@view_task');
 Route::get('/app/member_list', 'AppController@member_list');
 Route::get('/app/timesheet', 'AppController@timesheet');
+Route::get('/app/update_task_status', 'AppController@update_task_status');
 Route::get('/app/timesheet/table', 'AppController@timesheet_table');
 Route::post('/app/manual_time', 'AppController@manual_time');
 Route::get('/admin', 'AdminController@index');

@@ -29,10 +29,7 @@
                     @endif
 
                     <button style="display: none;" class="main start-working-loading"><i class="fa fa-spinner fa-pulse"></i> Notifying Server</button>
-
-                </div>
-                <div class="action">
-                    <button><i class="fa fa-check"></i> Submit for Review</button>
+                    <button class="submit-for-review" task_id="{{ $task->task_id }}"><i class="fa fa-check"></i> Submit for Review</button>
                 </div>
             </div>
         </div>

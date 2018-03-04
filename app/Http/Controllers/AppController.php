@@ -148,6 +148,8 @@ class AppController extends Controller
     	$__task 			= null;
     	$_task 				= Tbl_task::project()->assignedBy()->orderBy("task_deadline");
 
+        $_task->where("task_status", $request->status);
+
         if($request->assignee != 0)
         {
             $_task->filterAssignee($request->assignee);
@@ -172,11 +174,14 @@ class AppController extends Controller
 
     	foreach($_task as $key => $task)
     	{
+            $reviewee                       = Tbl_member::where("member_id", $task->task_reviewee)->value("username");
+
     		$__task[$key] 					= $task;
     		$__task[$key]->deadline 		= Helper::timeUntil($task->task_deadline);
     		$__task[$key]->tags 			= Tags::get($task->task_id);
     		$__task[$key]->working 			= $this->member->member_task == $task->task_id ? true : false;
-            $__task[$key]->assignee             = Self::parseAssigneeList($task->task_id);
+            $__task[$key]->assignee         = Self::parseAssigneeList($task->task_id);
+            $__task[$key]->reviewee         = $reviewee == "" ? "NONE" : $reviewee;
     	}
 
     	$data["_task"] 		= $__task;
@@ -230,6 +235,7 @@ class AppController extends Controller
     	$insert_task["task_deadline"] 		= Carbon::parse($request->deadline . $request->deadline_time)->format("Y-m-d H:i:s");
     	$insert_task["task_project"] 		= $request->task_project;
     	$insert_task["task_assigned_by"]	= $this->member->member_id;
+        $insert_task["task_reviewee"]       = $request->reviewee;
     	$task_id = Tbl_task::insertGetId($insert_task);
 
         /* INSERT TASK TAGS */
@@ -265,7 +271,8 @@ class AppController extends Controller
     	$task->deadline 	= Helper::timeUntil($task->task_deadline);
     	$task->task_detail 	= ($task->task_detail == '' ? '<div class="no-detail"><i class="fa fa-info-circle"></i> NO DETAILS REGARDING THIS TASK</div>' : $task->task_detail);
     	$task->working 		= $this->member->member_task == $task->task_id ? true : false;
-     	$data["task"] 	= $task;
+     	$data["task"] 	    = $task;
+
     	return view("app.view_task", $data);
     }
 
@@ -337,6 +344,14 @@ class AppController extends Controller
     	Tbl_timesheet::where("timesheet_id", $timesheet_id)->update($update);
 
     	return $update["second_spent"];
+    }
+
+    function update_task_status(Request $request)
+    {
+        $update["task_status"]      = $request->task_status;
+        Tbl_task::where("task_id", $request->task_id)->update($update);
+
+        echo json_encode("success");
     }
 
 	public function logout()
