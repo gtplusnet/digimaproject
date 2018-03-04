@@ -95,7 +95,7 @@
                     <label>Assignee</label>
                     <select name="assignee[]" multiple data-placeholder="Select assignee" class="multipleSelect form-control chosen-select" >
                         @foreach($_member as $member)
-                        <option {{ $member->assignee != 0 ? 'selected' : '' }} value="{{ $member->member_id }}" {{ $session_member->member_id == $member->member_id ? 'selected' : '' }}>{{ $member->username }}</option>
+                        <option {{ $member->assignee != 0 ? 'selected' : '' }} value="{{ $member->member_id }}">{{ $member->username }}</option>
                         @endforeach
                     </select>
                 </div>
