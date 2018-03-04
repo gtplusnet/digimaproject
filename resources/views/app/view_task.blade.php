@@ -22,7 +22,6 @@
         <div class="col-md-4">
             <div class="task-action-container">
                 <div class="action">
-
                     @if($task->task_status == "pending")
                         @if($task->working)
                             <button class="stop stop-working"><i class="fa fa-stop-circle"></i> Stop Working</button>

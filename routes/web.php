@@ -24,7 +24,9 @@ Route::get('/app/member_list', 'AppController@member_list');
 Route::get('/app/timesheet', 'AppController@timesheet');
 Route::get('/app/update_task_status', 'AppController@update_task_status');
 Route::get('/app/timesheet/table', 'AppController@timesheet_table');
+Route::get('/app/count_for_review', 'AppController@count_for_review');
 Route::post('/app/manual_time', 'AppController@manual_time');
+Route::get('/app/review', 'AppController@review');
 Route::get('/admin', 'AdminController@index');
 
 Route::get('/login', 'LoginController@index');

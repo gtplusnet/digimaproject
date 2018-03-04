@@ -160,6 +160,11 @@ class AppController extends Controller
             $_task->where("task_project", $request->project);
         }
 
+        if($request->reviewee == 1)
+        {
+            $_task->where("task_reviewee", $this->member->member_id);
+        }
+
         if($request->tags != 0)
         {
             $_task->filterTags($request->tags);
@@ -359,6 +364,17 @@ class AppController extends Controller
         Tbl_task::where("task_id", $request->task_id)->update($update);
 
         echo json_encode("success");
+    }
+
+    public function count_for_review()
+    {
+        return json_encode(Tbl_task::where("task_reviewee", $this->member->member_id)->where("task_status", "review")->count());
+    }
+
+    public function review()
+    {
+        $data["page"]   = "Review";
+        return view("app.review", $data);
     }
 
 	public function logout()

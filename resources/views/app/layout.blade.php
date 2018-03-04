@@ -11,7 +11,7 @@
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
     </head>
-    <body>
+    <body qa="{{ $session_member->member_qa }}">
         <div class="idle-cover" style="display: none;">
             <button class="btn btn-danger resume-work"><strong><i class="fa fa-exclamation-triangle"></i> You were tagged as IDLE.</strong><br>Click HERE to resume work now.<br></button>
         </div>
@@ -31,7 +31,7 @@
                 <div class="text"><i class="fa fa-tasks"></i> TASK LIST</div>
                 <div class="button">
                     @if($session_member->member_qa == 1)
-                        <button type="button" class="btn btn-primary click-manage-members"><i class="fa fa-check"></i> REVIEW TASK (0)</button>
+                        <button type="button" style="display: none;" class="btn btn-primary show-review-task"><span class="check"><i class="fa fa-check"></i></span> REVIEW TASK (<span class='count-review'>0</span>)</button>
                     @endif
                     <button type="button" class="btn btn-primary click-manage-members"><i class="fa fa-address-book"></i> VIEW MEMBERS</button>
                     <button type="button" class="btn btn-primary click-view-timesheet"><i class="fa fa-calendar"></i> TIMESHEET</button>

@@ -54,6 +54,80 @@ function dashboard()
 		add_event_manage_members();
 		add_event_view_timesheet();
 		add_event_for_markdown_box();
+		add_event_show_review_task();
+
+		action_regular_check_of_review_task();
+	}
+
+	function add_event_show_review_task()
+	{
+		$(".show-review-task").click(function()
+		{
+			var review_data  			= {};
+
+			$(".modal-loader").find(".loading-text").text("Loading Ongoing Task List");
+			$(".load-table-ongoing-task-list").html(html_modal_loading());
+
+			review_data.assignee 	= 0;
+			review_data.project 	= 0;
+			review_data.status 		= "review";
+			review_data.tags 		= 0;
+			review_data.search 		= "";
+			review_data.reviewee 	= 1;
+
+			$.ajax(
+			{
+				url: 		"/app/task_table",
+				data: 		review_data,
+				type: 		"get",
+				success: function(data)
+				{
+					$(".load-table-ongoing-task-list").html(data);
+				}
+			});
+		});
+	}
+
+	function action_regular_check_of_review_task()
+	{
+		if($("body").attr("qa") == 1)
+		{
+			action_qa_check();
+		}
+	}
+
+	function action_qa_check()
+	{
+		$.ajax(
+		{
+			url : "/app/count_for_review",
+			dataType: "json",
+			type : "get",
+			success : function(data)
+			{
+				$(".show-review-task").fadeIn();
+				$(".show-review-task").find(".count-review").text(data);
+
+				if(data > 0)
+				{
+					$(".show-review-task").addClass("red");
+					$(".show-review-task").find(".check").addClass("blink");
+				}
+				else
+				{
+					$(".show-review-task").removeClass("red");
+					$(".show-review-task").find(".check").removeClass("blink");
+				}
+			},
+			complete : function(data)
+			{
+
+				setTimeout(function()
+				{
+					action_qa_check();
+				}, 2000);
+			}
+		});
 	}
 
 	function add_chosen_select()

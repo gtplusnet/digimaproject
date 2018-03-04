@@ -347,6 +347,11 @@ input[type=text] {
           color: #fff;
           background-color: #006DB9;
           border: 2px solid #006DB9; }
+        .task-container .title .button button.red {
+          border: 2px solid #eee;
+          color: red;
+          background-color: #fff;
+          border: 2px solid red; }
   .task-container .task-filters {
     margin-bottom: 10px;
     font-size: 14px;
@@ -390,5 +395,15 @@ input[type=text] {
   .loader .loading-icon {
     color: #ccc;
     font-size: 3em; }
+
+@keyframes blink {
+  50% {
+    opacity: 0.0; } }
+@-webkit-keyframes blink {
+  50% {
+    opacity: 0.0; } }
+.blink {
+  animation: blink 1s step-start 0s infinite;
+  -webkit-animation: blink 1s step-start 0s infinite; }
 
 /*# sourceMappingURL=app_layout.css.map */
