@@ -348,6 +348,13 @@ class AppController extends Controller
 
     function update_task_status(Request $request)
     {
+        $task                       = Tbl_task::where("task_id", $request->task_id)->first();
+
+        if($task->task_reviewee == 0 && $request->task_status == "review")
+        {
+            $request->task_status   = "done";
+        }
+
         $update["task_status"]      = $request->task_status;
         Tbl_task::where("task_id", $request->task_id)->update($update);
 

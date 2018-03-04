@@ -22,14 +22,26 @@
         <div class="col-md-4">
             <div class="task-action-container">
                 <div class="action">
-                    @if($task->working)
-                        <button class="stop stop-working"><i class="fa fa-stop-circle"></i> Stop Working</button>
-                    @else
-                        <button class="main start-working" current_date="{{ date('Y-m-d') }}" member_id="{{ $session_member->member_id }}" task_id="{{ $task->task_id }}"><i class="fa fa-play-circle"></i> Start Working</button>
+
+                    @if($task->task_status == "pending")
+                        @if($task->working)
+                            <button class="stop stop-working"><i class="fa fa-stop-circle"></i> Stop Working</button>
+                        @else
+                            <button class="main start-working" current_date="{{ date('Y-m-d') }}" member_id="{{ $session_member->member_id }}" task_id="{{ $task->task_id }}"><i class="fa fa-play-circle"></i> Start Working</button>
+                        @endif
+                    @endif
+
+                    @if($session_member->member_qa == 1 && $task->task_status == "review" && $task->task_reviewee == $session_member->member_id)
+                        <button class="main submit-for-review" status="done" task_id="{{ $task->task_id }}"><i class="fa fa-star"></i> Approve as Done</button>
                     @endif
 
                     <button style="display: none;" class="main start-working-loading"><i class="fa fa-spinner fa-pulse"></i> Notifying Server</button>
-                    <button class="submit-for-review" task_id="{{ $task->task_id }}"><i class="fa fa-check"></i> Submit for Review</button>
+                    
+                    @if($task->task_status == "pending")
+                        <button class="submit-for-review" status="review" task_id="{{ $task->task_id }}"><i class="fa fa-check"></i> Submit for Review</button>
+                    @else
+                        <button class="submit-for-review" status="pending" task_id="{{ $task->task_id }}"><i class="fa fa-undo"></i> Return to Pending</button>
+                    @endif
                 </div>
             </div>
         </div>

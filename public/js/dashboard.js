@@ -477,8 +477,9 @@ function dashboard()
 
 			var ajax_submit_update_status 			= {};
 			ajax_submit_update_status.task_id 		= $task_id;
-			ajax_submit_update_status.task_status 	= "review"; 
+			ajax_submit_update_status.task_status 	= $(e.currentTarget).attr("status"); 
 
+			/* TIME OUT IF WORKDIN ON THIS TASK */
 			if($task_id == current_task)
 			{
 				action_timeout();
@@ -492,7 +493,8 @@ function dashboard()
 				type: "get",
 				success: function(data)
 				{
-
+					$("#view_task").modal("hide");
+					dashboard.action_load_ongoing_task_list();
 				}
 			});
 		});
