@@ -520,6 +520,26 @@ function dashboard()
 				}
 			});
 		});
+
+		$("body").on("click", ".edit-task", function(e)
+		{
+			$('#add_task').modal("show");
+			$("#add_task").find(".modal-content").html(html_modal_loading());
+
+			$task_id = $(e.currentTarget).attr("task_id");
+
+			$.ajax(
+			{
+				url: 		"/app/edit_task/" + $task_id,
+				data: 		{},
+				type: 		"get",
+				success: function(data)
+				{
+					$(".modal-loader").find(".loading-text").text("Loading Task Information");
+					$("#add_task").find(".modal-content").html(data);
+				}
+			});
+		});
 	}
 
 	function add_event_for_view_task()

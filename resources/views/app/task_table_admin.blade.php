@@ -8,7 +8,8 @@
                 <th class="text-center" width="100">ASSIGNEE</th>
                 <th class="text-center" width="100">Q.A</th>
                 <th class="text-center" width="150">DEADLINE</th>
-                <th class="text-center" width="130px"></th>
+                <th class="text-center" width="80px"></th>
+                <th class="text-center" width="80px"></th>
             </tr>
         </thead>
         <tbody>
@@ -26,13 +27,16 @@
                             <a href="javascript:" task_id="{{ $task->task_id }}" class="view-task"><i class="fa fa-eye"></i> View</a>
                         @else
                             <a href="javascript:" task_id="{{ $task->task_id }}" class="view-task"><i class="fa fa-clock"></i> Start</a>
-                        @endif
+                        @endif    
+                    </td>
+                    <td>
+                        <a href="javascript:" task_id="{{ $task->task_id }}" class="edit-task"><i class="fa fa-edit"></i> Edit</a>
                     </td>
                 </tr>
                 @endforeach
             @else
                 <tr>
-                    <td colspan="7" class="text-center">No Result Found</td>
+                    <td colspan="8" class="text-center">No Result Found</td>
                 </tr>
             @endif
         </tbody>

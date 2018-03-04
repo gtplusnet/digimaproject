@@ -224,7 +224,6 @@ class AppController extends Controller
         
     }
 
-
     public function add_task()
     {
     	$data["_project"] 	= Tbl_project::get();
@@ -232,6 +231,36 @@ class AppController extends Controller
         $data["_member"]    = Tbl_member::get();
     	return view("app.add_task", $data);
     }
+    public function edit_task($task_id)
+    {
+        $data["_project"]   = Tbl_project::get();
+
+        $__tags             = null;
+        $_tags              = Tbl_tags::get();
+
+        foreach($_tags as $key => $tags)
+        {
+            $__tags[$key]               = $tags;
+            $__tags[$key]->selected     = Tbl_task_tags::where("task_id", $task_id)->where("tag_id", $tags->tag_id)->value("task_tag_id");
+        }
+
+        $data["_tags"]      = $__tags;
+
+        $__member           = null;
+        $_member            = Tbl_member::get();
+
+        foreach($_member as $key => $member)
+        {
+            $__member[$key]             = $member;
+            $__member[$key]->assignee   = Tbl_task_assignee::where("task_id", $task_id)->where("task_assigned_to", $member->member_id)->value("task_assignee_id");
+        }
+
+        $data["_member"]    = $__member;
+
+        $data["task"]       = Tbl_task::where("task_id", $task_id)->first();
+        return view("app.edit_task", $data);
+    }
+
     public function add_task_submit(Request $request)
     {
     	/* INSERT TASK */
@@ -268,6 +297,50 @@ class AppController extends Controller
     	}
 
     	return json_encode($request->all());
+    }
+
+    public function edit_task_submit(Request $request, $task_id)
+    {
+        /* INSERT TASK */
+        $insert_task["task_title"]          = $request->task_title;
+        $insert_task["task_detail"]         = ($request->task_detail == "" ? "" : $request->task_detail);
+        $insert_task["task_deadline"]       = Carbon::parse($request->deadline . $request->deadline_time)->format("Y-m-d H:i:s");
+        $insert_task["task_project"]        = $request->task_project;
+        $insert_task["task_assigned_by"]    = $this->member->member_id;
+        $insert_task["task_reviewee"]       = $request->reviewee;
+        
+        Tbl_task::where("task_id", $task_id)->update($insert_task);
+
+        Tbl_task_assignee::where("task_id", $task_id)->delete();
+
+        /* INSERT TASK TAGS */
+        if($request->assignee)
+        {
+            foreach($request->assignee as $key => $assignee_id)
+            {
+                $insert_assignee[$key]["task_id"]             = $task_id;
+                $insert_assignee[$key]["task_assigned_to"]    = $assignee_id;
+            }
+
+            Tbl_task_assignee::insert($insert_assignee);
+        }
+
+
+        Tbl_task_tags::where("task_id", $task_id)->delete();
+
+        /* INSERT TASK TAGS */
+        if($request->tags)
+        {
+            foreach($request->tags as $key => $tag_id)
+            {
+                $insert_tags[$key]["task_id"]   = $task_id;
+                $insert_tags[$key]["tag_id"]    = $tag_id;
+            }
+
+            Tbl_task_tags::insert($insert_tags);
+        }
+
+        return json_encode($request->all());
     }
     public function view_task($task_id)
     {
