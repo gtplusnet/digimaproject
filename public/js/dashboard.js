@@ -157,7 +157,7 @@ function dashboard()
 			dashboard.action_load_ongoing_task_list();
 		});
 
-		$(".filter-oject").change(function()
+		$(".filter-project").change(function()
 		{
 			dashboard.action_load_ongoing_task_list();
 		});
@@ -492,7 +492,7 @@ function dashboard()
 				type: "get",
 				success: function(data)
 				{
-					
+
 				}
 			});
 		});
