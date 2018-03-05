@@ -115,11 +115,23 @@ class AppController extends Controller
 
         foreach($_member as $key => $member)
         {
+            $task                           = Tbl_task::where("task_id", $member->member_task)->first();
+
+            if($task)
+            {
+                $working                    = $task->task_title;
+            }
+            else
+            {
+                $working                    = "NONE YET";
+            }
+
             $second_spent                   = Tbl_timesheet::where("timesheet_date", date("Y-m-d"))->where("member_id", $member->member_id)->sum("second_spent");
 
             $__member[$key]                 = $member;
             $__member[$key]->last_online    = Helper::onlineAgo($member->last_work_time);
             $__member[$key]->today_render   = Helper::convertSeconds($second_spent);
+            $__member[$key]->working        = $working;
 
             $undertime                      = 28800 - $second_spent;
 
@@ -308,7 +320,7 @@ class AppController extends Controller
         $insert_task["task_project"]        = $request->task_project;
         $insert_task["task_assigned_by"]    = $this->member->member_id;
         $insert_task["task_reviewee"]       = $request->reviewee;
-        
+
         Tbl_task::where("task_id", $task_id)->update($insert_task);
 
         Tbl_task_assignee::where("task_id", $task_id)->delete();
