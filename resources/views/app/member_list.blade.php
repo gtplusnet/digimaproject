@@ -24,7 +24,7 @@
                     <td class="text-center">{!! $member->last_online !!}</td>
                     <td class="text-center">{!! $member->undertime !!}</td>
                     <td class="text-center">{!! $member->today_render !!}</td>
-                    <td class="text-center">{{ $member->working }}</td>
+                    <td class="text-center">{!! $member->working !!}</td>
                 </tr>
                 @endforeach
             </tbody>
