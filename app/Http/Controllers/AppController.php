@@ -119,7 +119,7 @@ class AppController extends Controller
 
             if($task)
             {
-                $working                    = "<a class='view_task' task_id='" . $task->task_id . "'>" . $task->task_title . "</a>";
+                $working                    = "<a href='javascript:' class='view_task' task_id='" . $task->task_id . "'>" . $task->task_title . "</a>";
             }
             else
             {
