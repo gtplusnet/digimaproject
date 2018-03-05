@@ -107,7 +107,7 @@
                         <option value="0">-- none -- </option>
                         @foreach($_member as $member)
                             @if($member->member_admin == 1)
-                                <option value="{{ $member->member_id }}" {{ $session_member->member_id == $member->member_id ? 'selected' : '' }}>{{ $member->username }}</option>
+                                <option value="{{ $member->member_id }}">{{ $member->username }}</option>
                             @endif
                         @endforeach
                     </select>

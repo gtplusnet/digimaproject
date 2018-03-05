@@ -108,7 +108,7 @@
                         <option value="0">-- none -- </option>
                         @foreach($_member as $member)
                             @if($member->member_qa == 1)
-                                <option {{ $task->task_reviewee == $member->member_id ? 'selected' : '' }} value="{{ $member->member_id }}" {{ $session_member->member_id == $member->member_id ? 'selected' : '' }}>{{ $member->username }}</option>
+                                <option {{ $task->task_reviewee == $member->member_id ? 'selected' : '' }} value="{{ $member->member_id }}">{{ $member->username }}</option>
                             @endif
                         @endforeach
                     </select>
