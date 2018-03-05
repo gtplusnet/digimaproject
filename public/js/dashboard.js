@@ -502,6 +502,12 @@ function dashboard()
 	{
 		$("body").on("click", ".view-task", function(e)
 		{
+			if($('#manage_members').is(':visible'))	
+			{
+				$("#manage_members").modal("hide");
+			}
+					
+
 			$('#view_task').modal("show");
 			$("#view_task").find(".modal-content").html(html_modal_loading());
 

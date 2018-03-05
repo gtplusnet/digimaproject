@@ -121,6 +121,6 @@
         <script type="text/javascript" src= "https://cdnjs.cloudflare.com/ajax/libs/showdown/1.8.6/showdown.min.js"></script>
         <script type="text/javascript" src="/js/jquery.autogrowtextarea.js"></script>
         <script type="text/javascript" src="/external/chosen/chosen.jquery.min.js"></script>
-        <script type="text/javascript" src="/js/dashboard.js?v=2.3"></script>
+        <script type="text/javascript" src="/js/dashboard.js?v=2.4"></script>
     </body>
 </html>
