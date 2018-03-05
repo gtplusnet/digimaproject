@@ -106,7 +106,7 @@
                     <select name="reviewee" class="form-control chosen-select">
                         <option value="0">-- none -- </option>
                         @foreach($_member as $member)
-                            @if($member->member_admin == 1)
+                            @if($member->member_qa == 1)
                                 <option value="{{ $member->member_id }}">{{ $member->username }}</option>
                             @endif
                         @endforeach
