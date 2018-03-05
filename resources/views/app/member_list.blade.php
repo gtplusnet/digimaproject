@@ -14,7 +14,7 @@
                     <th class="text-center">Last Online</th>
                     <th class="text-center">Undertime</th>
                     <th class="text-center">Today Render</th>
-                    <th class="text-center">Working On</th>
+                    <th class="text-center" width="200px">Working On</th>
                 </tr>
             </thead>
             <tbody>
