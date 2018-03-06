@@ -167,6 +167,7 @@ class AppController extends Controller
             if($second_spent == "")
             {
                 $__member[$key]->estimated_time_out     = "<span style='color: gray;'>-</span>";
+                $__member[$key]->today_render           = "<span style='color: gray;'>-</span>";
             }
         }
 
