@@ -119,11 +119,11 @@ class AppController extends Controller
 
             if($task)
             {
-                $working                    = "<a href='javascript:' class='view-task' task_id='" . $task->task_id . "'>" . $task->task_title . "</a>";
+                $working                    = "<a style='color: #333' href='javascript:' class='view-task' task_id='" . $task->task_id . "'>" . $task->task_title . "</a>";
             }
             else
             {
-                $working                    = "NONE YET";
+                $working                    = "<span style='color: gray'>-</span>";
             }
 
             $second_spent                   = Tbl_timesheet::where("timesheet_date", date("Y-m-d"))->where("member_id", $member->member_id)->sum("second_spent");
