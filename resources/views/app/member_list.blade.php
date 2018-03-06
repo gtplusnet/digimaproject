@@ -7,14 +7,14 @@
         </button>
     </div>
     <div class="modal-body">
-        <table class="table table-sm">
-            <thead style="background-color: #eee; color: #333; border: none;">
+        <table class="table table-sm" style="font-size: 14px;">
+            <thead style="background-color: #eee; color: #333; border: none; font-size: 14px;">
                 <tr>
                     <th class="text-center">Username</th>
                     <th class="text-center">Last<br>Online</th>
                     <th class="text-center">Estimated<br>Time Out</th>
                     <th class="text-center">Today Render</th>
-                    <th class="text-center" width="200px">Working On</th>
+                    <th class="text-center" width="300px">Working On</th>
                 </tr>
             </thead>
             <tbody>
