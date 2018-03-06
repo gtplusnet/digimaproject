@@ -134,17 +134,18 @@ class AppController extends Controller
             $__member[$key]->working        = $working;
 
             $undertime                      = 28800 - $second_spent;
+            $estimated_time_out             = date("h:i A", time() + $undertime);
 
             if($undertime > 0)
             {
-                 $__member[$key]->undertime      = "<span style='color: red;'>" . Helper::convertSeconds($undertime) . "</span>";
-                 $__member[$key]->overtime       = Helper::convertSeconds(0);
+                $__member[$key]->undertime              = "<span style='color: red;'>" . Helper::convertSeconds($undertime) . "</span>";
+                $__member[$key]->estimated_time_out     = "<span style='color: red;'>" . $estimated_time_out . "</span>";
             }
             else
             {
-                $undertime                      = $undertime * -1;
-                 $__member[$key]->overtime      = "<span style='color: green;'>" . Helper::convertSeconds($undertime) . "</span>";
-                 $__member[$key]->undertime       = Helper::convertSeconds(0);
+                $undertime                              = $undertime * -1;
+                $__member[$key]->undertime              = Helper::convertSeconds(0);
+                $__member[$key]->estimated_time_out     = "<span style='color: green;'>Time Complete</span>";
             }
 
            

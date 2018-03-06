@@ -11,8 +11,8 @@
             <thead style="background-color: #eee; color: #333; border: none;">
                 <tr>
                     <th class="text-center">Username</th>
-                    <th class="text-center">Last Online</th>
-                    <th class="text-center">Undertime</th>
+                    <th class="text-center">Last<br>Online</th>
+                    <th class="text-center">Estimated<br>Time Out</th>
                     <th class="text-center">Today Render</th>
                     <th class="text-center" width="200px">Working On</th>
                 </tr>
@@ -22,7 +22,7 @@
                 <tr>
                     <td class="text-center"><b>{{ '@' . strtolower($member->username) }}</b></td>
                     <td class="text-center">{!! $member->last_online !!}</td>
-                    <td class="text-center">{!! $member->undertime !!}</td>
+                    <td class="text-center">{!! $member->estimated_time_out !!}</td>
                     <td class="text-center">{!! $member->today_render !!}</td>
                     <td class="text-center">{!! $member->working !!}</td>
                 </tr>
