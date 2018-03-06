@@ -133,8 +133,21 @@ class AppController extends Controller
             $__member[$key]->today_render   = Helper::convertSeconds($second_spent);
             $__member[$key]->working        = $working;
 
+            if(date("h") > 16)
+            {
+                $break = 0;
+            }
+            elseif(date("h") > 13)
+            {
+                $break = 1200;
+            }
+            else
+            {
+                $break = 3600;
+            }
+
             $undertime                      = 28800 - $second_spent;
-            $estimated_time_out             = date("h:i A", time() + $undertime);
+            $estimated_time_out             = date("h:i A", time() + $undertime + $break);
 
             if($undertime > 0)
             {
