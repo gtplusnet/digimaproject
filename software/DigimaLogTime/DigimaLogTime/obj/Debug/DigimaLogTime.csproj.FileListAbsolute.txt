@@ -1,0 +1,14 @@
+E:\DigimaLogTime\DigimaLogTime\obj\Debug\DigimaLogTime.frmLogin.resources
+E:\DigimaLogTime\DigimaLogTime\obj\Debug\DigimaLogTime.frmMain.resources
+E:\DigimaLogTime\DigimaLogTime\obj\Debug\DigimaLogTime.csproj.GenerateResource.Cache
+E:\DigimaLogTime\DigimaLogTime\obj\Debug\DigimaLogTime.exe
+E:\DigimaLogTime\DigimaLogTime\obj\Debug\DigimaLogTime.pdb
+E:\DigimaLogTime\DigimaLogTime\bin\Debug\DigimaLogTime.exe.config
+E:\DigimaLogTime\DigimaLogTime\bin\Debug\DigimaLogTime.exe.manifest
+E:\DigimaLogTime\DigimaLogTime\bin\Debug\DigimaLogTime.application
+E:\DigimaLogTime\DigimaLogTime\bin\Debug\DigimaLogTime.exe
+E:\DigimaLogTime\DigimaLogTime\bin\Debug\DigimaLogTime.pdb
+E:\DigimaLogTime\DigimaLogTime\obj\Debug\DigimaLogTime.csprojResolveAssemblyReference.cache
+E:\DigimaLogTime\DigimaLogTime\obj\Debug\DigimaLogTime.exe.manifest
+E:\DigimaLogTime\DigimaLogTime\obj\Debug\DigimaLogTime.application
+E:\DigimaLogTime\DigimaLogTime\obj\Debug\DigimaTimer.Properties.Resources.resources

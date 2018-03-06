@@ -8,13 +8,12 @@
     </div>
     <div class="modal-body">
         <div class="row">
-
             <div class="col-md-12">
                 <div class="form-group">
                     <input required minlength="5" name="task_title" type="text" class="form-control" placeholder="Title of Task">
                 </div>
             </div>
-
+            
             <div class="col-md-12">
                 <div class="comment-content">
                     <div class="tab-content">
