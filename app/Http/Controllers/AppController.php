@@ -133,7 +133,7 @@ class AppController extends Controller
             $__member[$key]->today_render   = Helper::convertSeconds($second_spent);
             $__member[$key]->working        = $working;
 
-            if(date("h") > 16)
+            if(date("h") > 15)
             {
                 $break = 0;
             }
